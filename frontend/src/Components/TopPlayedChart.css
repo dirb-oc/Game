@@ -1,0 +1,30 @@
+.Top_container {
+  background-color: #1f2937;
+  border-radius: 10px;
+  padding: 20px 35px;
+  color: white;
+  height: 90%;
+}
+
+.Top_title {
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+.top-chart-subtitle {
+  color: #9CA3AF;
+  margin-top: 0px;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.top-chart-container {
+  background-color: #1f2937;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  max-height: 500px;
+}

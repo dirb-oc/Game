@@ -1,0 +1,116 @@
+.Tarjet_Container, .Tarjet_Container_L, .Tarjet_Container_C, .ContainerT_LM{
+    display: grid;
+    gap: 25px;
+}
+
+.Tarjet_Container{
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    margin: 15px 150px 15px 150px;
+}
+
+.Tarjet_Container_L{
+    grid-template-columns: repeat(auto-fill, minmax(785px, 1fr));
+    margin: 30px 150px 15px 150px;
+}
+
+.Tarjet_Container_C{
+    margin: 30px 155px 20px 150px;
+}
+
+.ContainerT_LM{
+    display: flex;
+    margin: 30px 155px 20px 150px;
+ }
+
+
+.Tarjet, .Tarjet_L, .Tarjet_C, .Tarjet_LM, .Tarjet_S{
+    background-color: #1F2937;
+    border: 1px solid var(--bordes);
+    border-radius: 10px;
+}
+
+.Tarjet{
+    width: 380px;
+    height: 150px;
+}
+
+.Tarjet_L{
+    width: 788px;
+    height: 450px;
+}
+
+.Tarjet_LM{
+    width: 1010px;
+    height: 310px;
+}
+
+
+.Tarjet_C{
+    width: 100%;
+    height: 550px; 
+}
+
+.Tarjet_S{
+    width: 600px;
+    height: 310px; 
+}
+
+.Tarjet_Head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    margin: 0 35px;
+    padding: 0;
+}
+
+.Tarjet_Head p{
+    color: rgb(203 213 225);;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.Tarjet_Head .T_Icon{
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+    font-size: 26px;
+}
+
+.Tarjet_Content{
+    margin: 0 35px;
+}
+
+.Value{
+    margin-top: -10px;
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.SubValue{
+    margin-top: -25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #9CA3AF;
+}
+
+.Azul{
+    color: #6293ff;
+}
+
+.Verde{
+    color: #22c55e;
+}
+
+.Violeta{
+    color: #905cf4;
+}
+
+.Naranja{
+    color: #d6803a;
+}
+
+.Amarillo{
+    color: #FFD700;
+}

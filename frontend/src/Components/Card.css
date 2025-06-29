@@ -1,0 +1,112 @@
+.Card_Container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 25px;
+    margin: 0 150px 30px 150px;
+}
+
+.Card{
+    width: 380px;
+    background-color: #1e2837;
+    border: 1px solid var(--bordes);
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.Card_Image {
+  width: 380px;
+  height: 240px;
+  border-radius: 10px 10px 0 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #a3a3a3;
+}
+
+.Card_Info{
+    padding: 0 20px;
+}
+
+.Card_Head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.Card_Title{
+    margin-bottom: 8px;
+    margin-top: 5px;
+}
+
+.Year_Realese{
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.Genres{
+    border-radius: 15px;
+    border: 1px solid #4b5463;
+    padding: 5px 10px;
+    color: #d0d5da;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.Time{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #D1D5DB;
+}
+
+.Icon {
+    display: flex;
+    align-items: center;
+    margin-right: 6px;
+    margin-top: 2px;
+    font-size: 18px;
+    color: #6293ff;
+}
+
+.Flexo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -5px;
+}
+
+.Status{
+    align-content: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 3px 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.Terminado{
+    background-color: #3265d3;
+}
+
+.Empezado{
+    background-color: #cb8a05;
+    color: #000;
+}
+
+.Sin_Jugar{
+    color: #000;
+    background-color: #4B5563;
+}
+
+.Card_Data{
+    display: flex;
+    height: 45px;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #374151;
+    color: #9CA3AF;
+    margin-bottom: 10px;
+}

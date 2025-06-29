@@ -1,0 +1,28 @@
+.buscador-wrapper {
+  position: relative;
+}
+
+.buscador-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+}
+
+.buscador-input {
+  background-color: #1e2837;
+  color: #9CA3AF;
+  width: 700px;
+  padding: 10px 12px 10px 32px;
+  border: 1px solid var(--bordes);
+  border-radius: 10px;
+  font-size: 18px;
+  outline: none;
+}
+
+.buscador-input::placeholder {
+  color: #9ca3af;
+}

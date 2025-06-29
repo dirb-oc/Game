@@ -1,0 +1,25 @@
+.Price_container {
+  background-color: #1f2937;
+  border-radius: 12px;
+  padding: 20px 35px;
+  width: 600px;
+  height: 410px;
+  color: white;
+}
+
+.Price_title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  color: white;
+  font-family: sans-serif;
+}
+
+.Price_subtitle {
+  color: #9CA3AF;
+  margin-top: 0px;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 15px;
+}

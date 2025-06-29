@@ -1,0 +1,82 @@
+.Bars_Conteiner{
+    margin: 25px 35px;
+}
+
+.Bar_Title{
+    color: white;
+    margin-bottom: -20px;
+}
+
+.Bar_Tex{   
+    margin-bottom: 30px;
+    color: #9CA3AF;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.Bar_Info{
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+
+.Bar_Subtitle{
+    color: #E5E7EB;
+    margin-top: 0px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.barra {
+    width: 100%;
+    background-color: #374151;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 15px;
+    margin-bottom: 20px;
+}
+
+.barra-progreso {
+    border-radius: 10px;
+    height: 100%;
+}
+
+.Bar_Subtex{
+    color: #9CA3AF;
+    margin-top: -10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.separator {
+  height: 1px;
+  background-color: #3c4452;
+  margin: 20px 0 10px 0;
+}
+
+.Numbers{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 150px;
+}
+
+.Number {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  text-align: center; /* Centra texto dentro de cada <p> */
+}
+
+.Ident{
+    margin-top: 15px;
+    font-size: 34px;
+    font-weight: 700;
+    color: white;
+}
+
+.SubIdent{
+    color: #9CA3AF;
+    margin-top: -35px;
+    font-size: 16px;
+    font-weight: 500;
+}

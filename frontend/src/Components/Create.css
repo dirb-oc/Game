@@ -1,0 +1,247 @@
+.Modal::-webkit-scrollbar {
+  width: 10px;
+}
+
+.Modal::-webkit-scrollbar-track {
+  background: #0c0c14;
+}
+
+.Modal::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+
+.Create{
+  background: var(--Azul_Component);
+  border: var(--Azul_Component);
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.Create:hover{
+  background-color: rgb(21, 48, 167);
+}
+
+.Content_Edit{
+  display: flex;
+  margin:20px 20px;
+  justify-content: end;
+}
+
+.Edit{
+  background: var(--Azul_Component);
+  border: var(--Azul_Component);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.Modal {
+  background: #1f2937;
+  padding: 10px 30px;
+  border-radius: 10px;
+  width: 750px;
+  max-height: 840px;
+  overflow-y: auto;
+  color: white;
+  animation: fadeInScale 0.3s ease-out forwards;
+}
+
+.Modal h3{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 20px 0 0 0;
+}
+
+.Modal p{
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0;
+  color: #9CA3AF;
+}
+
+.Form input, .Form textarea{
+  background-color: #374151;
+  color: #fff;
+  border-radius: 8px;
+  border: 1px solid #4B5563;
+  padding: 12px 15px;
+}
+
+.Form input::placeholder, .Form textarea::placeholder {
+  color: #9CA3AF;
+}
+
+.Form textarea{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 100px;
+}
+
+label{
+  color: #D1D5DB;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 5px 0 8px 0;
+}
+
+.separator {
+  height: 1px;
+  background-color: #3c4452;
+  margin: 20px 0 10px 0;
+}
+
+.Selector{
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+.FormButtons {
+  display: flex;
+  justify-content: flex-end; /* <-- alinea a la derecha */
+  margin-top: 1rem; /* opcional: separación con lo de arriba */
+  margin-bottom: 10px;
+}
+
+.FormButtons button {
+    background: var(--Azul_Component);
+    border: var(--Azul_Component);
+    border-radius: 5px;
+    color: white;
+    margin-left: 20px;
+    font-weight: 600;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.FormButtons button:first-child {
+  background-color: #6b7280;
+}
+
+.Image, .ImageP {
+  margin-top: 10px;
+  border: 2px solid #4B5563;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f2937;
+  position: relative;
+  overflow: hidden;
+}
+
+.Image{
+  width: 600px;
+  height: 250px;
+}
+
+.ImageP{
+  width: 220px;
+  height: 300px;
+}
+
+.Image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* ✅ hace que la imagen se ajuste dentro del marco */
+  border-radius: 8px;
+}
+
+.placeholder-text {
+  color: #9CA3AF;
+  font-size: 14px;
+  font-style: italic;
+}
+
+
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #4B5563;
+  border-radius: 24px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+/* Checked styles */
+.switch input:checked + .slider {
+  background-color: #3b82f6; /* azul tipo Tailwind */
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+.Box_Group {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.Element_Group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
