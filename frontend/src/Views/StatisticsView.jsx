@@ -7,9 +7,11 @@ import {convertirHorasADiasYHoras} from "../Utils/Utils";
 import { FaGamepad } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import TopPlayedChart from "../Components/TopPlayedChart";
+import ValuePerHourChart  from "../Components/ValuePerHourChart";
 import PlayedChart from "../Components/PlayedChart";
-import Tarjet from "../Components/Tarjet"
 import PriceChart from "../Components/PriceChart"
+import JuegosPorAnioChart  from "../Components/JuegosPorAnioChart"
+import Tarjet from "../Components/Tarjet"
 
 const StatisticsView = () => {
     const [games, setGames] = useState([]);
@@ -19,7 +21,7 @@ const StatisticsView = () => {
     const totalPrecio = games.reduce((acc, g) => acc + Number(g.precio), 0);
     const totalHoras = games.reduce((acc, g) => acc + Number(g.tiempo), 0);
     const totalAlmacenamiento = games.reduce((acc, g) => acc + Number(g.almacenamiento), 0);
-    const promedioPrecio = juegosConPrecio.length > 0 ? totalPrecio / juegosConPrecio.length : 0;
+    const promedioPrecio = parseInt(juegosConPrecio.length > 0 ? totalPrecio / juegosConPrecio.length : 0);
     const promedioAlmacenamiento = totalJuegos > 0 ? totalAlmacenamiento / totalJuegos : 0;
 
     useEffect(() => {loadGames(setGames); loadWish(setwish)},[]);
@@ -72,10 +74,21 @@ const StatisticsView = () => {
                     <PriceChart games={games} />
                 </div> 
             </div>
+            
             <div className="Tarjet_Container_C">
                 <div className="Tarjet_C"> 
-                    <TopPlayedChart games={games} />
+                    <JuegosPorAnioChart  games={games} />
                 </div>
+            </div>
+            
+            <div className="Tarjet_Container_L">
+                <div className="Tarjet_L">
+                    <ValuePerHourChart  games={games} />
+                    
+                </div> 
+                <div className="Tarjet_L">
+                    <TopPlayedChart games={games} />
+                </div> 
             </div>
         </>
     );

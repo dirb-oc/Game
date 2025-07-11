@@ -118,7 +118,7 @@ multiValueRemove: (base) => ({
 
 export function convertirHorasADiasYHoras(horasTotales) {
   const dias = Math.floor(horasTotales / 24);
-  const horas = horasTotales % 24;
+  const horas = Math.floor(horasTotales % 24);
 
   let resultado = "";
 
@@ -130,6 +130,7 @@ export function convertirHorasADiasYHoras(horasTotales) {
     if (dias > 0) resultado += " y ";
     resultado += `${horas} ${horas === 1 ? "hora" : "horas"}`;
   }
+
   return resultado || "Pendiente";
 }
 

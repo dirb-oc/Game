@@ -212,26 +212,25 @@ const WishView = () => {
 
       <div className="Content_Table">
 				<Table
-  data={wishFiltered}
-  onRowClick={(game) => {
-    const cleaned = {
-      ...game,
-      precio: Number(game.precio.replace(/\D/g, "")),
-      minimo: Number(game.minimo.replace(/\D/g, "")),
-      almacenamiento: parseFloat(game.almacenamiento),
-    };
-    setSelectedWish(cleaned);
-  }}
-  columns={camposOrdenados}
-/>
-
+          data={wishFiltered}
+          onRowClick={(game) => {
+            const cleaned = {
+              ...game,
+              precio: Number(game.precio.replace(/\D/g, "")),
+              minimo: Number(game.minimo.replace(/\D/g, "")),
+              almacenamiento: parseFloat(game.almacenamiento),
+            };
+            setSelectedWish(cleaned);
+          }}
+          columns={camposOrdenados}
+        />
         
         {selectedWish && (
-  <WishUpdate
-    game={selectedWish}
-    onClose={() => setSelectedWish(null)}
-  />
-)}
+          <WishUpdate
+            game={selectedWish}
+            onClose={() => setSelectedWish(null)}
+          />
+        )}
 
       </div>
     </>

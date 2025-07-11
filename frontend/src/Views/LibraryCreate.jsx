@@ -48,6 +48,13 @@ const LibraryCreate = () => {
     setForm(prev => ({ ...prev, generos: selectedOptions.map(option => option.value) }));
   };
 
+  const handleInputChange = (name, value) => {
+    setForm(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleYearInput = (e) => {
     const year = e.target.value;
     setForm(prev => ({ ...prev, lanzamiento: year }));
@@ -69,7 +76,7 @@ const LibraryCreate = () => {
 
     const dataToSend = {
       nombre: form.nombre,
-      lanzamiento: `${year}-01-01`,
+      lanzamiento: `${year}-02-01`,
       precio: parseFloat(form.precio) || 0,
       almacenamiento: parseFloat(form.almacenamiento) || 0,
       tiempo: parseFloat(form.tiempo) || 0,
@@ -83,11 +90,12 @@ const LibraryCreate = () => {
     };
 
     try {
-      await createWish(dataToSend);
-      alert("Juego deseado agregado correctamente.");
+      await createGame(dataToSend);
       setModalOpen(false);
+      window.location.reload();
     } catch (error) {
       alert("Error al crear el juego.");
+      console.log(error);
     }
   };
 

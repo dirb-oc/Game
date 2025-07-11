@@ -31,37 +31,33 @@ const ReadLibrary = () => {
   const totalHoras = games.reduce((acc, g) => acc + Number(g.tiempo), 0);
   const totalAlmacenamiento = games.reduce((acc, g) => acc + Number(g.almacenamiento), 0);
   
-  const porcentajeHoras =  game.tiempo > 0
-    ? ((game.tiempo / totalHoras) * 100).toFixed(1) : "0";
-
-  const porcentajePrecio = game.precio > 0
-    ? ((game.precio / totalPrecio) * 100).toFixed(1) : "0";
-
-  const porcentajeAlma = game.almacenamiento > 0
-    ? ((game.almacenamiento / totalAlmacenamiento) * 100).toFixed(1) : "0";
-
-
+  const porcentajeHoras =  game.tiempo > 0 ? ((game.tiempo / totalHoras) * 100).toFixed(1) : "0";
+  const porcentajePrecio = game.precio > 0 ? ((game.precio / totalPrecio) * 100).toFixed(1) : "0";
+  const porcentajeAlma = game.almacenamiento > 0 ? ((game.almacenamiento / totalAlmacenamiento) * 100).toFixed(1) : "0";
 
   const valorPorHora = () => {
     if (game.precio == 0) return "$0";
     if (game.tiempo == 0) return "No jugado";
-    const valor = game.precio / game.tiempo;
+    const valor = parseInt(game.precio / game.tiempo);
         return `$${Number(valor).toLocaleString("es-CO")}`
-    };
+  };
 
-    let Subvalue;
-    let Value;
-    const cantidad = Number(game.logros_Cantidad);
-    const completados = Number(game.logros_Completados);
-
-    if (!cantidad || isNaN(cantidad) || cantidad === 0) {
-      Value = "Sin Logros";
-      Subvalue = "No Aplica";
-    } else {
-      const porcentaje = Math.round((completados / cantidad) * 100) || 0;
-      Value = `${completados}/${cantidad}`;
-      Subvalue = `${porcentaje}% Completados`;
-    };
+  let Subvalue;
+  let Value;
+  const cantidad = Number(game.logros_Cantidad);
+  const completados = Number(game.logros_Completados);
+    
+  if (!cantidad || isNaN(cantidad) || cantidad === 0) {
+    Value = "No tiene logros";
+    Subvalue = "No aplica";
+  } else if (cantidad == completados) {
+    Value = (<span className="Amarillo">COMPLETADO!</span>)
+    Subvalue = `Todos los logros obtenidos`;
+  } else {
+    const porcentaje = Math.round((completados / cantidad) * 100) || 0;
+    Value = ( <> {completados} <span className="Amarillo">/</span> {cantidad} </> );
+    Subvalue = `${porcentaje}% Completados`;
+  }
 
   return (
     <>
@@ -111,11 +107,11 @@ const ReadLibrary = () => {
             Subvalue = {`Instalado`}
           />
           <Tarjet 
-            title = {'Logros'}
-            icon = {<FaTrophy />}
-            color = {"Amarillo"}
-            Value = {<>{completados}<span className="Amarillo">/</span>{cantidad}</>}
-            Subvalue = {Subvalue}
+            title="Logros"
+            icon={<FaTrophy />}
+            color="Amarillo"
+            Value={Value}
+            Subvalue={Subvalue}
           />
         </div>
           

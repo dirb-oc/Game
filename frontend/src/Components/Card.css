@@ -7,16 +7,21 @@
 
 .Card{
     width: 380px;
+    height: 440px;
     background-color: #1e2837;
     border: 1px solid var(--bordes);
     border-radius: 10px;
     color: #fff;
     cursor: pointer;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0; /* empieza oculta hasta que se anime */
 }
 
 .Card_Image {
   width: 380px;
+  min-width: 380px;
   height: 240px;
+  min-height: 240px;
   border-radius: 10px 10px 0 0;
   background-size: cover;
   background-position: center;
@@ -45,6 +50,7 @@
 }
 
 .Genres{
+    background-color: #1e2837;
     border-radius: 15px;
     border: 1px solid #4b5463;
     padding: 5px 10px;
@@ -109,4 +115,15 @@
     border-top: 1px solid #374151;
     color: #9CA3AF;
     margin-bottom: 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

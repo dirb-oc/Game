@@ -1,7 +1,7 @@
 import { FaRegClock } from "react-icons/fa";
 import "./Card.css";
 
-const Card = ({ image, title, genres, year, time, finished, price, storage }) => {
+const Card = ({ image, title, genres, year, time, finished, price, storage, style = {}}) => {
   const Tiempo = time > 0 ? `${parseFloat(time)} ${time == 1 ? "Hora" : "Horas"}`: "----";
   const Precio = price == 0 ? "Gratis" : `$${Number(price).toLocaleString("es-CO")}`;
   const Estado = finished ? "Terminado": time > 0 ? "Empezado" : "Sin_Jugar";
@@ -9,14 +9,14 @@ const Card = ({ image, title, genres, year, time, finished, price, storage }) =>
   const lanzamiento = new Date(year).getFullYear();
 
   return (
-    <div className="Card">
+    <div className="Card" style={style}>
       <img className="Card_Image" src={image} alt={title} />
       <div className="Card_Info">
         <div className="Card_Head">
           <h3 className="Card_Title">{title}</h3>
           <p className="Year_Realese">{lanzamiento}</p>
         </div>
-        {genres.map((g, i) => (
+        {genres.slice(0, 3).map((g, i) => (
           <span key={i} className="Genres">
             {g.genero}{i < genres.length - 1}
           </span>

@@ -101,9 +101,10 @@ const LibraryView = () => {
       </div>
 
       <div className="Card_Container">
-        {juegosFiltrados.map((game) => (
+        {juegosFiltrados.map((game, i) => (
           <Link to={`/${game.id}`} key={game.id} style={{ textDecoration: "none", color: "inherit" }}>
             <Card
+              style={{ animationDelay: `${i * 50}ms` }}
               id={game.id}
               year={game.lanzamiento}
               time={game.tiempo}

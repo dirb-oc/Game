@@ -80,3 +80,26 @@
     font-size: 16px;
     font-weight: 500;
 }
+
+.barra {
+  background-color: #2e3747;
+  border-radius: 10px;
+  height: 18px;
+  overflow: hidden;
+  margin: 5px 0;
+  margin-bottom: 15px;
+}
+
+.barra-progreso {
+  height: 100%;
+  transition: width 1s ease-in-out;
+  border-radius: 10px;
+}
+
+.barra-progreso.verde {
+    background-color: #22c55e;
+}
+
+.barra-progreso.azul {
+  background-color: #6293ff;
+}
