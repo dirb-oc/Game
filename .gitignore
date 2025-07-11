@@ -6,6 +6,8 @@ venv/
 *.env
 token.json
 Client_Secret.json
+
+# Scripts locales
 Dash_Game.bat
 
 # Backups
