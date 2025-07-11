@@ -6,6 +6,7 @@ venv/
 *.env
 token.json
 Client_Secret.json
+Dash_Game.bat
 
 # Backups
 *.backup
