@@ -1,6 +1,9 @@
+const DATA_BASE = "/data/";
+
 export const loadWish = async (setStateFn) => {
   try {
-    const response = await fetch('http://localhost:8000/deseados/');
+    const response = await fetch(`${DATA_BASE}Deseados.json`);
+    if (!response.ok) throw new Error("Error al cargar deseados");
     const data = await response.json();
     setStateFn(data);
   } catch (error) {
@@ -9,31 +12,18 @@ export const loadWish = async (setStateFn) => {
 };
 
 export const createWish = async (data) => {
-  try {
-    const response = await fetch("http://localhost:8000/deseados/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) throw new Error("Error al crear el juego deseado");
-    return await response.json();
-  } catch (error) {
-    console.error("Error en createWish:", error.message);
-    throw error;
-  }
+  const stored = JSON.parse(localStorage.getItem("deseados") || "[]");
+  stored.push(data);
+  localStorage.setItem("deseados", JSON.stringify(stored));
+  return data; // simula que el backend respondió
 };
 
 export const updateWish = async (id, data) => {
-  try {
-    const response = await fetch(`http://localhost:8000/deseados/${id}/`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) throw new Error("Error al actualizar el juego deseado");
-    return await response.json();
-  } catch (error) {
-    console.error("Error en updateWish:", error.message);
-    throw error;
+  const stored = JSON.parse(localStorage.getItem("deseados") || "[]");
+  const index = stored.findIndex(item => item.id === id);
+  if (index !== -1) {
+    stored[index] = { ...stored[index], ...data };
+    localStorage.setItem("deseados", JSON.stringify(stored));
   }
+  return data;
 };

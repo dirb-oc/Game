@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "genero": "Accion"
+    },
+    {
+        "id": 2,
+        "genero": "Mundo Abierto"
+    },
+    {
+        "id": 3,
+        "genero": "Sigilo"
+    },
+    {
+        "id": 4,
+        "genero": "Rouge Like"
+    },
+    {
+        "id": 5,
+        "genero": "Aventura"
+    },
+    {
+        "id": 6,
+        "genero": "Terror"
+    }
+]

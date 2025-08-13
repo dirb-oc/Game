@@ -1,0 +1,992 @@
+[
+    {
+        "id": 1,
+        "nombre": "Age of Empires",
+        "lanzamiento": "2018-01-01",
+        "precio": "39900.00",
+        "almacenamiento": "20.0",
+        "minimo": "9975.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 4,
+        "nombre": "Bully",
+        "lanzamiento": "2006-01-01",
+        "precio": "32000.00",
+        "almacenamiento": "4.7",
+        "minimo": "11200.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 5,
+        "nombre": "Prince of Persia: The Sands of Time",
+        "lanzamiento": "2003-01-01",
+        "precio": "29900.00",
+        "almacenamiento": "1.5",
+        "minimo": "5980.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 6,
+        "nombre": "Assassin's Creed I",
+        "lanzamiento": "2007-01-01",
+        "precio": "59900.00",
+        "almacenamiento": "8.0",
+        "minimo": "14975.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 8,
+        "nombre": "Return to Castle Wolfenstein",
+        "lanzamiento": "2007-01-01",
+        "precio": "14900.00",
+        "almacenamiento": "0.8",
+        "minimo": "5960.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 9,
+        "nombre": "S.T.A.L.K.E.R: Shadow of Chernobyl",
+        "lanzamiento": "2006-02-01",
+        "precio": "60900.00",
+        "almacenamiento": "10.0",
+        "minimo": "10000.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 11,
+        "nombre": "Borderlands",
+        "lanzamiento": "2009-01-01",
+        "precio": "79990.00",
+        "almacenamiento": "25.0",
+        "minimo": "7900.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 19,
+        "nombre": "Red Dead Redemption",
+        "lanzamiento": "2010-01-01",
+        "precio": "199999.00",
+        "almacenamiento": "12.0",
+        "minimo": "119999.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 20,
+        "nombre": "Enter the Gungeon",
+        "lanzamiento": "2016-01-01",
+        "precio": "37500.00",
+        "almacenamiento": "2.0",
+        "minimo": "3750.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 23,
+        "nombre": "South Park: The Stick of Truth",
+        "lanzamiento": "2014-01-01",
+        "precio": "89900.00",
+        "almacenamiento": "6.0",
+        "minimo": "8990.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 25,
+        "nombre": "The Binding of Isaac",
+        "lanzamiento": "2011-01-01",
+        "precio": "25000.00",
+        "almacenamiento": "0.1",
+        "minimo": "8250.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 27,
+        "nombre": "Celeste",
+        "lanzamiento": "2018-01-01",
+        "precio": "47500.00",
+        "almacenamiento": "1.2",
+        "minimo": "11875.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 33,
+        "nombre": "ULTRAKILL",
+        "lanzamiento": "2020-01-01",
+        "precio": "58800.00",
+        "almacenamiento": "3.0",
+        "minimo": "39396.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 34,
+        "nombre": "Cult of the Lamb",
+        "lanzamiento": "2022-01-01",
+        "precio": "70000.00",
+        "almacenamiento": "4.0",
+        "minimo": "35000.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 38,
+        "nombre": "Tunic",
+        "lanzamiento": "2022-02-01",
+        "precio": "70000.00",
+        "almacenamiento": "2.0",
+        "minimo": "35000.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 39,
+        "nombre": "Balatro",
+        "lanzamiento": "2023-02-01",
+        "precio": "37500.00",
+        "almacenamiento": "0.1",
+        "minimo": "33750.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 40,
+        "nombre": "Deltarune",
+        "lanzamiento": "2025-01-01",
+        "precio": "58800.00",
+        "almacenamiento": "1.0",
+        "minimo": "58800.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 42,
+        "nombre": "Sea of Stars",
+        "lanzamiento": "2024-01-01",
+        "precio": "81000.00",
+        "almacenamiento": "15.0",
+        "minimo": "52650.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 43,
+        "nombre": "Alien: Isolation",
+        "lanzamiento": "2014-02-01",
+        "precio": "130000.00",
+        "almacenamiento": "35.0",
+        "minimo": "26000.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 44,
+        "nombre": "Another Crab's Treasure",
+        "lanzamiento": "2024-01-01",
+        "precio": "70000.00",
+        "almacenamiento": "6.0",
+        "minimo": "42000.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 46,
+        "nombre": "Dark Souls Remaster",
+        "lanzamiento": "2018-01-01",
+        "precio": "133900.00",
+        "almacenamiento": "8.0",
+        "minimo": "66950.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 47,
+        "nombre": "Deadlink",
+        "lanzamiento": "2022-01-01",
+        "precio": "58800.00",
+        "almacenamiento": "15.0",
+        "minimo": "38220.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 49,
+        "nombre": "Devil May Cry Collection",
+        "lanzamiento": "2012-02-01",
+        "precio": "79700.00",
+        "almacenamiento": "12.0",
+        "minimo": "26301.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 50,
+        "nombre": "Dishored",
+        "lanzamiento": "2012-01-01",
+        "precio": "30900.00",
+        "almacenamiento": "9.0",
+        "minimo": "7725.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 52,
+        "nombre": "Kingdom Hearts 1.5 + 2.5",
+        "lanzamiento": "2017-01-01",
+        "precio": "180900.00",
+        "almacenamiento": "60.0",
+        "minimo": "108540.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 53,
+        "nombre": "Madison",
+        "lanzamiento": "2022-01-01",
+        "precio": "59999.00",
+        "almacenamiento": "10.0",
+        "minimo": "41999.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 54,
+        "nombre": "Middle Earth: Shadow of Mordor",
+        "lanzamiento": "2014-01-01",
+        "precio": "64999.00",
+        "almacenamiento": "44.0",
+        "minimo": "12999.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 55,
+        "nombre": "NieR: Automata",
+        "lanzamiento": "2017-01-01",
+        "precio": "123323.00",
+        "almacenamiento": "50.0",
+        "minimo": "49329.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 56,
+        "nombre": "Prey",
+        "lanzamiento": "2017-01-01",
+        "precio": "90000.00",
+        "almacenamiento": "20.0",
+        "minimo": "9000.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 58,
+        "nombre": "Prodeus",
+        "lanzamiento": "2020-01-01",
+        "precio": "49900.00",
+        "almacenamiento": "4.0",
+        "minimo": "29940.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 59,
+        "nombre": "Quantun Break",
+        "lanzamiento": "2016-01-01",
+        "precio": "75000.00",
+        "almacenamiento": "68.0",
+        "minimo": "15000.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 61,
+        "nombre": "SOMA",
+        "lanzamiento": "2015-01-01",
+        "precio": "70000.00",
+        "almacenamiento": "25.0",
+        "minimo": "3500.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 62,
+        "nombre": "Terminator: Resistance",
+        "lanzamiento": "2019-01-01",
+        "precio": "81750.00",
+        "almacenamiento": "32.0",
+        "minimo": "20437.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 63,
+        "nombre": "Turbo Overkill",
+        "lanzamiento": "2022-01-01",
+        "precio": "42400.00",
+        "almacenamiento": "5.0",
+        "minimo": "27104.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 64,
+        "nombre": "Wolfenstein I: The New Order",
+        "lanzamiento": "2014-01-01",
+        "precio": "59900.00",
+        "almacenamiento": "50.0",
+        "minimo": "14975.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 65,
+        "nombre": "Atomic Heart",
+        "lanzamiento": "2023-01-01",
+        "precio": "199900.00",
+        "almacenamiento": "90.0",
+        "minimo": "65967.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 67,
+        "nombre": "Clair Obscure",
+        "lanzamiento": "2025-01-01",
+        "precio": "153000.00",
+        "almacenamiento": "55.0",
+        "minimo": "137700.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 68,
+        "nombre": "Crash Bandicoot 4",
+        "lanzamiento": "2020-01-01",
+        "precio": "176199.00",
+        "almacenamiento": "30.0",
+        "minimo": "83050.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 69,
+        "nombre": "Crysis Remastered",
+        "lanzamiento": "2020-01-01",
+        "precio": "39500.00",
+        "almacenamiento": "20.0",
+        "minimo": "13825.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 71,
+        "nombre": "Days Gone",
+        "lanzamiento": "2021-01-01",
+        "precio": "149000.00",
+        "almacenamiento": "70.0",
+        "minimo": "46000.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 72,
+        "nombre": "Devil May Cry 5",
+        "lanzamiento": "2019-01-01",
+        "precio": "79700.00",
+        "almacenamiento": "35.0",
+        "minimo": "19925.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 73,
+        "nombre": "Doom Eternal",
+        "lanzamiento": "2020-01-01",
+        "precio": "120000.00",
+        "almacenamiento": "80.0",
+        "minimo": "30000.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 75,
+        "nombre": "Elden Ring",
+        "lanzamiento": "2022-01-01",
+        "precio": "199900.00",
+        "almacenamiento": "60.0",
+        "minimo": "119940.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 76,
+        "nombre": "Forza Horizon 5",
+        "lanzamiento": "2021-01-01",
+        "precio": "214900.00",
+        "almacenamiento": "110.0",
+        "minimo": "107450.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 77,
+        "nombre": "Ghost of Tsushima",
+        "lanzamiento": "2021-01-01",
+        "precio": "219000.00",
+        "almacenamiento": "75.0",
+        "minimo": "146730.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 78,
+        "nombre": "God of War",
+        "lanzamiento": "2018-01-01",
+        "precio": "184000.00",
+        "almacenamiento": "70.0",
+        "minimo": "73600.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 79,
+        "nombre": "Grand Theft Auto V",
+        "lanzamiento": "2013-01-01",
+        "precio": "119000.00",
+        "almacenamiento": "120.0",
+        "minimo": "52425.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 80,
+        "nombre": "High On Life",
+        "lanzamiento": "2022-01-01",
+        "precio": "82500.00",
+        "almacenamiento": "59.0",
+        "minimo": "41250.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 83,
+        "nombre": "Mafia",
+        "lanzamiento": "2020-01-01",
+        "precio": "159999.00",
+        "almacenamiento": "50.0",
+        "minimo": "23999.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 84,
+        "nombre": "Marvel’s Spider-Man",
+        "lanzamiento": "2022-01-01",
+        "precio": "219000.00",
+        "almacenamiento": "75.0",
+        "minimo": "109500.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 85,
+        "nombre": "Metal Gear Solid V",
+        "lanzamiento": "2015-01-01",
+        "precio": "109000.00",
+        "almacenamiento": "28.0",
+        "minimo": "65400.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 86,
+        "nombre": "Ratchet & Clank",
+        "lanzamiento": "2021-01-01",
+        "precio": "219000.00",
+        "almacenamiento": "75.0",
+        "minimo": "109500.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 87,
+        "nombre": "Red Dead Redemption 2",
+        "lanzamiento": "2018-01-01",
+        "precio": "239999.00",
+        "almacenamiento": "150.0",
+        "minimo": "59990.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 88,
+        "nombre": "Resident Evil 2",
+        "lanzamiento": "2019-01-01",
+        "precio": "112000.00",
+        "almacenamiento": "26.0",
+        "minimo": "28000.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 89,
+        "nombre": "Resident Evil 7",
+        "lanzamiento": "2017-01-01",
+        "precio": "53400.00",
+        "almacenamiento": "24.0",
+        "minimo": "21360.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 91,
+        "nombre": "Sekiro",
+        "lanzamiento": "2019-01-01",
+        "precio": "249100.00",
+        "almacenamiento": "25.0",
+        "minimo": "124550.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 93,
+        "nombre": "Stellar Blade",
+        "lanzamiento": "2024-01-01",
+        "precio": "219000.00",
+        "almacenamiento": "75.0",
+        "minimo": "219000.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 94,
+        "nombre": "System Shock",
+        "lanzamiento": "2023-01-01",
+        "precio": "149989.00",
+        "almacenamiento": "10.0",
+        "minimo": "55495.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 95,
+        "nombre": "The Last of Us Part 1",
+        "lanzamiento": "2022-01-01",
+        "precio": "219000.00",
+        "almacenamiento": "100.0",
+        "minimo": "109500.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 30,
+        "nombre": "Blasphemous",
+        "lanzamiento": "2018-02-01",
+        "precio": "63900.00",
+        "almacenamiento": "4.0",
+        "minimo": "6390.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 7,
+        "nombre": "Call of Duty: Modern Warfare",
+        "lanzamiento": "2007-02-01",
+        "precio": "88099.00",
+        "almacenamiento": "8.0",
+        "minimo": "41550.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 12,
+        "nombre": "Dead Space",
+        "lanzamiento": "2008-02-01",
+        "precio": "66990.00",
+        "almacenamiento": "7.5",
+        "minimo": "26796.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 18,
+        "nombre": "F.E.A.R.",
+        "lanzamiento": "2010-02-01",
+        "precio": "23500.00",
+        "almacenamiento": "17.0",
+        "minimo": "4700.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 13,
+        "nombre": "Grand Theft Auto IV",
+        "lanzamiento": "2008-02-01",
+        "precio": "67999.00",
+        "almacenamiento": "22.0",
+        "minimo": "20399.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 35,
+        "nombre": "GRIME",
+        "lanzamiento": "2021-02-01",
+        "precio": "33500.00",
+        "almacenamiento": "5.0",
+        "minimo": "16750.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 31,
+        "nombre": "Hades",
+        "lanzamiento": "2020-02-01",
+        "precio": "58800.00",
+        "almacenamiento": "20.0",
+        "minimo": "19992.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 21,
+        "nombre": "Hotline Miami 2",
+        "lanzamiento": "2015-02-01",
+        "precio": "37500.00",
+        "almacenamiento": "0.2",
+        "minimo": "5625.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 3,
+        "nombre": "Half Life: Opposing Force",
+        "lanzamiento": "1999-02-01",
+        "precio": "13500.00",
+        "almacenamiento": "4.0",
+        "minimo": "3375.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 2,
+        "nombre": "Half Life: Blue Shift",
+        "lanzamiento": "1999-02-01",
+        "precio": "13500.00",
+        "almacenamiento": "4.0",
+        "minimo": "3375.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 36,
+        "nombre": "Inscryption",
+        "lanzamiento": "2021-02-01",
+        "precio": "50000.00",
+        "almacenamiento": "3.0",
+        "minimo": "20000.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 32,
+        "nombre": "Katana Zero",
+        "lanzamiento": "2019-02-01",
+        "precio": "37500.00",
+        "almacenamiento": "0.2",
+        "minimo": "22500.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 28,
+        "nombre": "Little Nightmares",
+        "lanzamiento": "2017-02-01",
+        "precio": "77900.00",
+        "almacenamiento": "10.0",
+        "minimo": "19475.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 37,
+        "nombre": "Mass Efecct Legendary",
+        "lanzamiento": "2021-02-01",
+        "precio": "214999.00",
+        "almacenamiento": "120.0",
+        "minimo": "21449.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 14,
+        "nombre": "Max Payne 2",
+        "lanzamiento": "2008-02-01",
+        "precio": "23500.00",
+        "almacenamiento": "1.5",
+        "minimo": "5875.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 29,
+        "nombre": "Moonlighter",
+        "lanzamiento": "2018-02-01",
+        "precio": "31000.00",
+        "almacenamiento": "4.0",
+        "minimo": "4650.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 41,
+        "nombre": "Nine Sols",
+        "lanzamiento": "2024-02-01",
+        "precio": "70000.00",
+        "almacenamiento": "15.0",
+        "minimo": "42000.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 22,
+        "nombre": "Ori and the blind",
+        "lanzamiento": "2016-02-01",
+        "precio": "89900.00",
+        "almacenamiento": "11.0",
+        "minimo": "17980.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 15,
+        "nombre": "Plants vs. Zombies",
+        "lanzamiento": "2009-02-01",
+        "precio": "11900.00",
+        "almacenamiento": "0.1",
+        "minimo": "11900.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 24,
+        "nombre": "Stardew Valley",
+        "lanzamiento": "2016-02-01",
+        "precio": "32000.00",
+        "almacenamiento": "0.5",
+        "minimo": "16000.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 45,
+        "nombre": "Black Mesa",
+        "lanzamiento": "2014-02-01",
+        "precio": "47500.00",
+        "almacenamiento": "20.0",
+        "minimo": "4750.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 66,
+        "nombre": "Black Myth: Wukong",
+        "lanzamiento": "2023-02-01",
+        "precio": "199000.00",
+        "almacenamiento": "130.0",
+        "minimo": "159200.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 70,
+        "nombre": "Cyberpunk 2077",
+        "lanzamiento": "2019-02-01",
+        "precio": "199000.00",
+        "almacenamiento": "70.0",
+        "minimo": "69650.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 51,
+        "nombre": "Disney Epic Mickey: Rebrushed",
+        "lanzamiento": "2023-02-01",
+        "precio": "130000.00",
+        "almacenamiento": "28.0",
+        "minimo": "52000.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 74,
+        "nombre": "Dragon Ball: Sparking Zero",
+        "lanzamiento": "2023-02-01",
+        "precio": "214900.00",
+        "almacenamiento": "29.0",
+        "minimo": "150430.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 81,
+        "nombre": "Horizon Zero Dawn",
+        "lanzamiento": "2019-02-01",
+        "precio": "184000.00",
+        "almacenamiento": "100.0",
+        "minimo": "110400.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 82,
+        "nombre": "Lies of P",
+        "lanzamiento": "2022-02-01",
+        "precio": "220000.00",
+        "almacenamiento": "50.0",
+        "minimo": "110000.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 57,
+        "nombre": "Prince of Persia The Lost Crown",
+        "lanzamiento": "2023-02-01",
+        "precio": "159900.00",
+        "almacenamiento": "30.0",
+        "minimo": "63960.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 90,
+        "nombre": "Resident Evil 8",
+        "lanzamiento": "2020-02-01",
+        "precio": "112000.00",
+        "almacenamiento": "28.0",
+        "minimo": "28000.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 92,
+        "nombre": "Silent Hill 2",
+        "lanzamiento": "2023-02-01",
+        "precio": "219900.00",
+        "almacenamiento": "50.0",
+        "minimo": "131940.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 26,
+        "nombre": "The Witcher 2",
+        "lanzamiento": "2010-02-01",
+        "precio": "64999.00",
+        "almacenamiento": "25.0",
+        "minimo": "9749.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 60,
+        "nombre": "Tomb Raider",
+        "lanzamiento": "2013-02-01",
+        "precio": "50700.00",
+        "almacenamiento": "12.0",
+        "minimo": "7605.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 10,
+        "nombre": "Tomb Raider: Anniversary",
+        "lanzamiento": "2007-02-01",
+        "precio": "30400.00",
+        "almacenamiento": "4.0",
+        "minimo": "3344.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 96,
+        "nombre": "Uncharted",
+        "lanzamiento": "2022-01-01",
+        "precio": "184000.00",
+        "almacenamiento": "126.0",
+        "minimo": "73600.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 97,
+        "nombre": "Wolfenstein II: The New Colossus",
+        "lanzamiento": "2017-01-01",
+        "precio": "128900.00",
+        "almacenamiento": "55.0",
+        "minimo": "19335.00",
+        "requisitos": "Alto"
+    },
+    {
+        "id": 98,
+        "nombre": "Cronos: The New Dawn",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 99,
+        "nombre": "Gears Reloaded",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 100,
+        "nombre": "Hollow Knight: Silksong",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 101,
+        "nombre": "Judas",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 102,
+        "nombre": "Metal Eden",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 103,
+        "nombre": "Mouse: P.I. For Hire",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 104,
+        "nombre": "Psychofinger",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 105,
+        "nombre": "RetroSpace",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 16,
+        "nombre": "Alan Wake",
+        "lanzamiento": "2009-02-01",
+        "precio": "37500.00",
+        "almacenamiento": "8.0",
+        "minimo": "4750.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 17,
+        "nombre": "Batman: Arkham Asylum",
+        "lanzamiento": "2009-02-01",
+        "precio": "64999.00",
+        "almacenamiento": "8.0",
+        "minimo": "12999.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 106,
+        "nombre": "Crisol: Theater of Idols",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 107,
+        "nombre": "Warhammer 40.000: Space Marine",
+        "lanzamiento": "2011-01-01",
+        "precio": "91900.00",
+        "almacenamiento": "20.0",
+        "minimo": "22975.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 108,
+        "nombre": "Alice: Madness Returns",
+        "lanzamiento": "2011-01-01",
+        "precio": "39999.00",
+        "almacenamiento": "8.5",
+        "minimo": "3999.00",
+        "requisitos": "Minimo"
+    },
+    {
+        "id": 48,
+        "nombre": "Destroy All Humans!",
+        "lanzamiento": "2019-02-01",
+        "precio": "60900.00",
+        "almacenamiento": "19.0",
+        "minimo": "15225.00",
+        "requisitos": "Medio"
+    },
+    {
+        "id": 109,
+        "nombre": "Mariachi Legends",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    },
+    {
+        "id": 110,
+        "nombre": "Railborn",
+        "lanzamiento": null,
+        "precio": null,
+        "almacenamiento": null,
+        "minimo": null,
+        "requisitos": null
+    }
+]
