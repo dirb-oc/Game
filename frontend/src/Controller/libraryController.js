@@ -1,55 +1,40 @@
+const DATA_BASE = "/Data/";
+
 import { getLibraryGames } from "../Models/libraryModel";
 
+// Carga juegos desde JSON estático
 export const loadGames = async (setStateFn) => {
   try {
-    const data = await getLibraryGames();
+    const data = await getLibraryGames(); // Ya lee Libreria.json
     setStateFn(data);
   } catch (error) {
     console.error("Error desde el controlador:", error.message);
   }
 };
 
+// Simulación: guardar en localStorage
 export const createGame = async (gameData) => {
-  try {
-    const response = await fetch("http://localhost:8000/libreria/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(gameData),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Error en la respuesta:", errorData);
-      throw new Error("Error al crear el juego");
-    }
-    const newGame = await response.json();
-    return newGame;
-  } catch (error) {
-    console.error("Error al enviar juego:", error);
-    throw error;
-  }
+  const stored = JSON.parse(localStorage.getItem("libreria") || "[]");
+  stored.push(gameData);
+  localStorage.setItem("libreria", JSON.stringify(stored));
+  return gameData;
 };
 
+// Obtener juego por ID desde JSON estático
 export const getGameById = async (id) => {
-  const response = await fetch(`http://localhost:8000/libreria/${id}/`);
-  if (!response.ok) throw new Error("No se pudo obtener el juego");
-  return await response.json();
+  const res = await fetch(`${DATA_BASE}Libreria.json`);
+  if (!res.ok) throw new Error("No se pudo obtener el juego");
+  const games = await res.json();
+  return games.find((g) => g.id == id);
 };
 
+// Simulación de actualización
 export const updateGame = async (id, data) => {
-  const response = await fetch(`http://localhost:8000/libreria/${id}/`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  if (!response.ok) {
-    throw new Error("Error al actualizar el juego");
+  const stored = JSON.parse(localStorage.getItem("libreria") || "[]");
+  const index = stored.findIndex((g) => g.id == id);
+  if (index !== -1) {
+    stored[index] = { ...stored[index], ...data };
+    localStorage.setItem("libreria", JSON.stringify(stored));
   }
-
-  return await response.json();
+  return data;
 };
