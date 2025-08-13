@@ -1,4 +1,4 @@
-const DATA_BASE = "/data/";
+const DATA_BASE = "/Data/";
 
 export const loadWish = async (setStateFn) => {
   try {

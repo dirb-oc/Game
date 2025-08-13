@@ -1,4 +1,4 @@
-const DATA_BASE = "/data/";
+const DATA_BASE = "/Data/";
 
 export const getLibraryGames = async () => {
   const res = await fetch(`${DATA_BASE}Libreria.json`);
