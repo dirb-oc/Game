@@ -13,8 +13,8 @@
 }
 
 .buscador-input {
-  background-color: #1e2837;
-  color: #9CA3AF;
+  background-color: var(--Input);
+  color: var(--Title_Sec);
   width: 700px;
   padding: 10px 12px 10px 32px;
   border: 1px solid var(--bordes);
@@ -24,5 +24,5 @@
 }
 
 .buscador-input::placeholder {
-  color: #9ca3af;
+  color: var(--Title_Sec);
 }

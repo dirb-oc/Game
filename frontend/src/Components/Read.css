@@ -28,7 +28,7 @@
 }
 
 .banner-content {
-  margin: 0px 0 15px 150px;
+  margin: 0 0 15px 150px;
   display: flex;
   width: 100%;
   z-index: 3;
@@ -38,7 +38,7 @@
 
 .banner-cover {
   width: 280px;
-  height: 310px;
+  height: 360px;
   border: 2px solid var(--bordes);
   border-radius: 10px;
 }
@@ -56,7 +56,7 @@
   background-color: transparent;
   border: none;
   border-radius: 8px;
-  color: #D1D5DB;
+  color: var(--Label);
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
@@ -77,40 +77,40 @@
 .Read_Title{
   margin-top: 0;
   font-size: 50px;
-  color: white;  
+  color: rgb(255, 255, 255);  
 }
 
 .Read_Year{
+  color: var(--Card_Year);
   margin-top: -30px;
   font-size: 26px;
-  color: rgb(203 213 225);
   font-weight: 500;
 }
 
 .Status{
-  display: inline-flex;        /* hace que el contenido se ajuste a su tamaño */
-  align-items: center;         /* centra verticalmente */
-  justify-content: center;     /* centra horizontalmente */
+  display: inline-flex;
+  align-items: center;         
+  justify-content: center;     
   border-radius: 15px;
-  padding: 3px 15px;
-  font-size: 18px;
+  padding: 5px 15px;
+  font-size: 15px;
   font-weight: 600;
   white-space: nowrap; 
 }
 
 .Terminado{
-    background-color: #3265d3;
-    color: #fff;
+  background-color: var(--Verde);
+  color: #fff;
 }
 
 .Empezado{
-    background-color: #cb8a05;
-    color: #000;
+  background-color: var(--Amarillo);
+  color: #000;
 }
 
 .Sin_Jugar{
-    color: #000;
-    background-color: #4B5563;
+  background-color: var(--Nada);
+  color: #000;
 }
 
 .Title_Card{
@@ -123,7 +123,7 @@
   margin: 0px 35px 0 35px;
   font-size: 23px;
   font-weight: 400;
-  color: #9CA3AF;
+  color: var(--Title_Sec);
 }
 
 .Porcent_Game{
@@ -147,7 +147,7 @@
 }
 
 .GameItem{
-  color: #9CA3AF;
+  color: #fff;
   margin-top: -35px;
   font-size: 20px;
   font-weight: 500;

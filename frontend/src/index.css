@@ -1,7 +1,31 @@
-:root{
-  --bordes: #374151;
-  --Azul: #6293ff;
-  --Azul_Component: #3265d3;
+:root {
+  --Background: #0a0f1a;
+  --Title: #f1f5f9;
+  --Title_Sec: #7c8ba1;
+  --bordes: #1a2233;
+  --Azul: #2563eb;
+  --Verde: #16a34a;
+  --Morado: #7c3aed;
+  --Amarillo: #ca8a04;
+  --Rojo: #dc2626;      
+  --Nada: #475569;
+
+  /* Cards */
+  --Card: #111827;
+  --Card_Text: #e2e8f0;
+  --Card_Year: #94a3b8;
+
+  /* Forms */
+  --Input: #1a2233;
+  --Label: #e2e8f0;
+  --Not: #7c8ba1;
+
+  /* Estadisticas */
+  --Barra: #374151;
+
+  /* Tabla */
+  --Head: #1a2233;
+  --Body: #111827;
 }
 
 body::-webkit-scrollbar {
@@ -18,17 +42,17 @@ body::-webkit-scrollbar-thumb {
 }
 
 body{
-  background-color: #111827;
+  background-color: var(--Background);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
 }
 
 .Title {
-  color: white;
   margin: 30px 0 15px 150px;
 }
 
 .Title h1 {
+  color: var(--Title);
   display: flex;
   align-items: center;
   font-weight: 700;
@@ -36,25 +60,26 @@ body{
 }
 
 .Title p {
+  color: var(--Title_Sec);
   font-size: 22px;
-  color: #9CA3AF;
   margin-top: 4px;
 }
+
 .Stats, .List, .Wish{
   text-decoration: none;
-  font-weight: 600;
-  
+  font-weight: 500;  
 }
+
 .Stats{
-  color: #22c55e;
+  color: var(--Verde);
 }
 
 .List{
-  color: #0084ff;
+  color: var(--Azul);
 }
 
 .Wish{
-  color: #905cf4;
+  color: var(--Morado);
 }
 
 .Icon_Title {
@@ -75,7 +100,7 @@ body{
 .Tool_Group {
   display: flex;
   align-items: center;
-  gap: 15px; /* Espacio entre los elementos */
+  gap: 15px;
 }
 
 .Selector{

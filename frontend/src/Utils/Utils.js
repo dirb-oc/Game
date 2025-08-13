@@ -1,8 +1,8 @@
 export const Selector_Styles = {
   control: (base, state) => ({
     ...base,
-    backgroundColor: '#1e2837',
-    borderColor: '#4B5563',
+    backgroundColor: 'var(--Input)',
+    borderColor: 'var(--bordes)',
     width: '220px',
     color: 'white',
     borderRadius: '8px',
@@ -18,13 +18,13 @@ export const Selector_Styles = {
   }),
   menu: (base) => ({
     ...base,
-    backgroundColor: '#1F2937', // bg-gray-800
+    backgroundColor: '#0f172a', // bg-gray-800
     borderRadius: '8px',
     marginTop: '4px',
   }),
   option: (base, state) => ({
     ...base,
-    backgroundColor: state.isFocused ? '#374151' : '#1F2937',
+    backgroundColor: state.isFocused ? '#0f172a' : '#1F2937',
     color: '#9CA3AF',
     cursor: 'pointer',
   }),
@@ -41,12 +41,11 @@ export const Selector_Styles = {
   }),
 };
 
-
 export const Multi_Styles = {
   control: (base, state) => ({
     ...base,
-    backgroundColor: '#374151',
-    borderColor: '#4B5563',
+    backgroundColor: 'var(--Input)',
+    borderColor: '#1a2233',
     width: '100%',
     color: 'white',
     borderRadius: '8px',

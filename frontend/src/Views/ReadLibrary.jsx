@@ -95,7 +95,7 @@ const ReadLibrary = () => {
           <Tarjet 
             title = {'Tiempo Jugado'}
             icon = {<MdAccessTime />}
-            color = {"Azul"}
+            color = {"Violeta"}
             Value = {Tiempo}
             Subvalue = {Dias}
           />

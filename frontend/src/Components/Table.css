@@ -7,7 +7,7 @@ table {
 
 /* Encabezado */
 table thead th {
-  background-color: #374151;
+  background-color: var(--Head);
   text-align: left;
   padding: 16px 24px;
   font-weight: 600;
@@ -18,7 +18,7 @@ table thead th {
 
 /* Filas */
 table tbody tr {
-  background-color: #1f2937;
+  background-color: var(--Body);
   transition: background-color 0.2s ease, transform 0.2s ease;  
 }
 
@@ -31,7 +31,7 @@ table tbody tr:hover {
 /* Celdas */
 table tbody td {
   padding: 16px 24px;
-  color: #d1d5db;
+  color: var(--Label);
   font-size: 16px;
   font-weight: 400;
   border-bottom: none;
@@ -48,7 +48,7 @@ table tbody tr:last-child td {
   padding: 1.5rem;
   margin: 2rem auto;
   border-radius: 10px;
-  background-color: #374151;
+  background-color: var(--Head);
   color: #d1d5db;
   font-style: italic;
 }
@@ -56,8 +56,6 @@ table tbody tr:last-child td {
 /* Contenedor externo */
 .Content_Table {
   margin: 15px 150px 30px 150px;
-  background: #111827;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Esquinas redondeadas arriba */
@@ -88,17 +86,17 @@ table tbody tr:last-child td:last-child {
 }
 
 .descuento-alto {
-  background-color: #15803d; /* Verde */
+  background-color: var(--Verde); /* Verde */
   color: white;
 }
 
 .descuento-medio {
-  background-color: #ca8a04; /* Amarillo */
+  background-color: var(--Amarillo); /* Amarillo */
   color: white;
 }
 
 .descuento-bajo {
-  background-color: #b91c1c; /* Rojo */
+  background-color: var(--Rojo); /* Rojo */
   color: white;
 }
 

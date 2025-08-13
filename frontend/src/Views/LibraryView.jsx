@@ -8,7 +8,6 @@ import LibraryCreate from "./LibraryCreate";
 import Card from "../Components/Card"
 import Select from "react-select";
 
-
 const LibraryView = () => {
   const [games, setGames] = useState([]);
   const [orderBy, setOrderBy] = useState("Nombre");
@@ -76,7 +75,9 @@ const LibraryView = () => {
       <div className="Title">
         <h1><span className="Icon_Title"><IoGameControllerOutline /></span>Coleccion de Videojuegos</h1>
         <p>
-          {juegosFiltrados.length} de {games.length} juegos - ver las <Link to="/estadisticas" className="Stats">Estadísticas</Link> o los <Link to="/deseados" className="Wish">Deseados</Link>.
+          {juegosFiltrados.length} de {games.length} juegos - ver las 
+          <Link to="/estadisticas" className="Stats"> Estadísticas</Link> o los 
+          <Link to="/deseados" className="Wish"> Deseados</Link>.
         </p>
       </div>
       <div className="Menu_Tool">

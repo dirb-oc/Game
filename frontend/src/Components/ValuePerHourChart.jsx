@@ -36,7 +36,9 @@ const ValuePerHourChart = ({ games }) => {
   return (
     <div className="Price_Per_Hour_Container">
       <h2 className="chart-title">Valor por Hora</h2>
-      <p className="PerHound_subtitle">El valor de la hora es <span className="Valor">${dt}</span> y el Promedio es de <span className="Valor">${promedioValorHora}</span></p>
+      <p className="PerHound_subtitle">
+        El valor de la hora es <span className="Valor">${dt}</span> y el Promedio es de <span className="Valor">${promedioValorHora}</span>
+      </p>
       <ResponsiveContainer width="115%" height={300}>
         <PieChart>
           <Pie
@@ -46,6 +48,8 @@ const ValuePerHourChart = ({ games }) => {
             innerRadius={70}
             dataKey="value"
             nameKey="name"
+            stroke="#111827ff"
+            strokeWidth={2}
             label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%` }
             isAnimationActive={true}
           >

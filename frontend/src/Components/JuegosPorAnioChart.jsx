@@ -14,7 +14,6 @@ const JuegosPorAnioChart = ({ games }) => {
 
   const dataAño = Object.entries(juegosPorAño).map(([year, Cantidad]) => ({ year: parseInt(year), Cantidad}));
 
-
   const ticksCadaDosAnios = []; 
   for (let y = minYear; y <= maxYear; y += 2) { ticksCadaDosAnios.push(y); }
 
@@ -24,23 +23,23 @@ const JuegosPorAnioChart = ({ games }) => {
       <p className="chart-subtitle">Cantidad de juegos agregados por año</p>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={dataAño}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#252f3fff" />
           <XAxis dataKey="year" stroke="#E5E7EB" ticks={ticksCadaDosAnios}/>
           <YAxis allowDecimals={false} stroke="#E5E7EB" />
           <Tooltip 
             contentStyle={{
-              backgroundColor: "#1f2937",
-              border: " #4f46e5 1px solid",
+              backgroundColor: "#0f172a", // fondo más oscuro y elegante
+              border: "1px solid #7c3aed", // morado más vibrante (de tu paleta)
               borderRadius: "8px",
-              color: " #e5e7eb",
+              color: "#f1f5f9", // texto más claro
               fontWeight: "bold"
             }}
           />
           <Area
             type="monotone"
             dataKey="Cantidad"
-            stroke="#4f46e5"
-            fill="#4f46e5"
+            stroke="#7c3aed"
+            fill="#7c3aed"
             strokeWidth={2}
           />
         </AreaChart>

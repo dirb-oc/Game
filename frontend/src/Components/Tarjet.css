@@ -24,7 +24,7 @@
 
 
 .Tarjet, .Tarjet_L, .Tarjet_C, .Tarjet_LM, .Tarjet_S{
-    background-color: #1F2937;
+    background-color: var(--Card);
     border: 1px solid var(--bordes);
     border-radius: 10px;
 }
@@ -65,7 +65,7 @@
 }
 
 .Tarjet_Head p{
-    color: rgb(203 213 225);;
+    color: var(--Title);
     font-size: 19px;
     font-weight: 500;
 }
@@ -92,7 +92,7 @@
     margin-top: -25px;
     font-size: 16px;
     font-weight: 500;
-    color: #9CA3AF;
+    color: var(--Title_Sec);
 }
 
 .Azul{
@@ -100,17 +100,17 @@
 }
 
 .Verde{
-    color: #22c55e;
+    color: var(--Verde);
 }
 
 .Violeta{
-    color: #905cf4;
+    color: var(--Morado);
 }
 
 .Naranja{
-    color: #d6803a;
+    color: var(--Amarillo);
 }
 
 .Amarillo{
-    color: #FFD700;
+    color: var(--Amarillo);
 }

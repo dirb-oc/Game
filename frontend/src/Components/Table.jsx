@@ -10,7 +10,6 @@ const Table = ({ data, onRowClick, columns }) => {
   const headers = columns ? columns : Object.keys(data[0]).filter((key) => !CamposOcultos.includes(key));
 
   const getDescuentoClass = (valor) => {
-    // Verifica si el valor es "-" o no puede convertirse en número
     if (valor === "-" || isNaN(parseInt(valor))) return "descuento-nulo";
   
     const num = parseInt(valor.replace("%", ""));
@@ -18,7 +17,6 @@ const Table = ({ data, onRowClick, columns }) => {
     if (num >= 25) return "descuento-medio";
     return "descuento-bajo";
   };
-
 
   return (
     <table>

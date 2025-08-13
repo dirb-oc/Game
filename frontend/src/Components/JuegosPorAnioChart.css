@@ -1,5 +1,5 @@
 .chart-container {
-  background-color: #1f2937;
+  background-color: var(--Card);
   border-radius: 10px;
   padding: 20px 35px;
   color: white;
@@ -16,7 +16,7 @@
 }
 
 .chart-subtitle {
-  color: #9CA3AF;
+  color: var(--Title_Sec);
   margin-top: 0px;
   font-weight: 400;
   font-size: 20px;

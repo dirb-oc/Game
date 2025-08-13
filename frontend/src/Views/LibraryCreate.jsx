@@ -113,138 +113,132 @@ const LibraryCreate = () => {
             <h3>Agregar Nuevo Videojuego</h3>
             <p>Completar la información del videojuego</p>
             <form onSubmit={handleSubmit} className="Form">
-              <div className="Box_Group">
-                <div className="Element_Group">
-                  <label>Nombre del Juego</label>
-                  <input type="text"
-                    name="nombre"
-                    placeholder="Nombre"
-                    value={form.nombre}
-                    onChange={handleChange}
-                    required
-                  />
+              <div className="FormGrid">
+
+                <div className="FormColumn">
+                  <div className="Box_Group">
+                    <div className="Element_Group">
+                      <label>Nombre del Juego</label>
+                      <input type="text" name="nombre" placeholder="Nombre"
+                        value={form.nombre} onChange={handleChange} required />
+                    </div>
+
+                    <div className="Element_Group">
+                      <label>Año de lanzamiento</label>
+                      <input type="number" ref={yearInputRef} name="lanzamiento"
+                        placeholder="2019" value={form.lanzamiento}
+                        onChange={handleYearInput} required />
+                    </div>
+                  </div>
+
+                  <div className="Box_Group">
+                    <div className="Element_Group">
+                      <label>Precio</label>
+                      <input type="text" name="precio" value={form.precioFormatted}
+                        onChange={handleFormattedPriceChange} />
+                    </div>
+
+                    <div className="Element_Group">
+                      <label>Almacenamiento</label>
+                      <input type="number" name="almacenamiento"
+                        value={form.almacenamiento} onChange={handleChange} />
+                    </div>
+                  </div>
+
+                  <div className="separator" />
+
+                  <div className="Box_Group">
+                    <div className="Element_Group">
+                      <label>Tiempo jugado</label>
+                      <input type="number" name="tiempo" value={form.tiempo} onChange={handleChange} />
+                    </div>
+
+                    <div className="Element_Group">
+                      <label>Estado</label>
+                      <div className="switch-wrapper">
+                        <label className="switch">
+                          <input type="checkbox"
+                            checked={form.terminado}
+                            onChange={(e) => handleInputChange("terminado", e.target.checked)} />
+                          <span className="slider"></span>
+                        </label>
+                        <span className="switch-label">
+                          {form.terminado ? "Terminado" : "Sin terminar"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="separator" />
+
+                  <div className="Box_Group">
+                    <div className="Element_Group">
+                      <label>Logros - Total</label>
+                      <input type="number" name="logros_Cantidad"
+                        value={form.logros_Cantidad} onChange={handleChange} />
+                    </div>
+
+                    <div className="Element_Group">
+                      <label>Logros - Completados</label>
+                      <input type="number" name="logros_Completados"
+                        value={form.logros_Completados} onChange={handleChange} />
+                    </div>
+                  </div>
+
+                  <div className="separator" />
+
+                  <label>Géneros</label>
+                  <Select options={genreOptions} styles={Multi_Styles} isMulti
+                    onChange={handleGenreChange} className="Selector"
+                    placeholder="Seleccionar géneros" />
+
+                  <div className="separator" />
+
+                  <div className="Element_Group">
+                    <label>Descripción</label>
+                    <textarea type="text" name="descripcion" value={form.descripcion}
+                      onChange={handleChange} placeholder="Descripción del juego" />
+                  </div>
                 </div>
-        
-                <div className="Element_Group">
-                  <label>Año de lanzamiento</label>
-                  <input type="number"
-                    ref={yearInputRef}
-                    name="lanzamiento"
-                    placeholder="2019"
-                    value={form.lanzamiento}
-                    onChange={handleYearInput}
-                    required
-                  />
+
+                {/* Columna derecha */}
+                <div className="FormColumn">
+                  <div className="Element_Group">
+                    <label>Banner</label>
+                    <input type="text" name="imagen" value={form.imagen}
+                      onChange={handleChange} placeholder="https://ejemplo.com/banner.jpg" />
+                    <div className="Image">
+                      {form.imagen ? (
+                        <img src={form.imagen} alt="Vista previa" />
+                      ) : (
+                        <span className="placeholder-text">Vista previa</span>
+                      )}
+                    </div>
+                  </div>
+                    
+                  <div className="separator" />
+                    
+                  <div className="Element_Group">
+                    <label>Portada</label>
+                    <input type="text" name="imagenP" value={form.imagenP}
+                      onChange={handleChange} placeholder="https://ejemplo.com/portada.jpg" />
+                    <div className="ImageP">
+                      {form.imagenP ? (
+                        <img src={form.imagenP} alt="Vista previa" />
+                      ) : (
+                        <span className="placeholder-text">Vista previa</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="FormButtons">
+                    <button type="button" onClick={() => setModalOpen(false)}>Cancelar</button>
+                    <button type="submit">Guardar</button>
+                  </div>
                 </div>
               </div>
-
-              <div className="Box_Group">
-                <div className="Element_Group">
-                  <label>Precio</label>
-                  <input
-                    type="text"
-                    name="precio"
-                    value={form.precioFormatted}
-                    onChange={handleFormattedPriceChange}
-                  />
-                </div>
-                <div className="Element_Group">
-                  <label>Almacenamiento</label  >
-                  <input type="number" name="almacenamiento" value={form.almacenamiento} onChange={handleChange} />
-                </div>
-              </div>
-
-              <div class="separator" />
-
-              <div className="Box_Group">
-                <div className="Element_Group">
-                  <label>Tiempo jugado</label>
-                  <input type="number" name="tiempo" value={form.tiempo} onChange={handleChange} />
-                </div>
-                <div className="Element_Group">
-
-                  <label>Estado</label>
-              <div className="switch-wrapper">
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    checked={form.terminado}
-                    onChange={(e) => handleInputChange("terminado", e.target.checked)}
-                  />
-                  <span className="slider"></span>
-                </label>
-                <span className="switch-label">
-                  {form.terminado ? "Terminado" : "Sin terminar"}
-                </span>
-              </div>
-                </div>
-              </div>
-
-              <div class="separator" />
-
-              <div className="Box_Group">
-                <div className="Element_Group">
-                  <label>Logros - Total</label>
-                  <input type="number" name="logros_Cantidad" value={form.logros_Cantidad} onChange={handleChange} />
-                </div>
                 
-                <div className="Element_Group">
-                  <label>Logros - Completados</label>
-                  <input type="number" name="logros_Completados" value={form.logros_Completados} onChange={handleChange} />
-                </div>
-                
-              </div>
-
-              <div class="separator" />
-
-              <label>Géneros</label>
-              <Select options={genreOptions}
-                styles ={Multi_Styles}
-                isMulti
-                onChange={handleGenreChange}
-                className="Selector"
-                placeholder="Seleccionar géneros"
-              />
-
-              <div class="separator" />
-              
-              <div className="Element_Group">
-                <label>Descripcion</label>
-                <textarea type="text" name="descripcion" value={form.descripcion} onChange={handleChange} placeholder="Descripcion del juego"/>
-              </div>
-
-              <div class="separator" />
-              
-              <div className="Element_Group">
-                <label>Banner</label>
-                <input type="text" name="imagen" value={form.imagen} onChange={handleChange} placeholder="https://ejemplo.com/banner.jpg"/>
-                <div className="Image">
-                  {form.imagen ? (
-                    <img src={form.imagen} alt="Vista previa" />
-                  ) : (
-                    <span className="placeholder-text">Vista previa</span>
-                  )}
-                </div>
-              </div>
-
-              <div class="separator" />
-              
-              <div className="Element_Group">
-                <label>Portada</label>
-                <input type="text" name="imagenP" value={form.imagenP} onChange={handleChange} placeholder="https://ejemplo.com/portada.jpg"/>
-                <div className="ImageP">
-                  {form.imagenP ? (
-                    <img src={form.imagenP} alt="Vista previa" />
-                  ) : (
-                    <span className="placeholder-text">Vista previa</span>
-                  )}
-                </div>
-              </div>
-              <div className="FormButtons">
-                <button type="button" onClick={() => setModalOpen(false)}>Cancelar</button>
-                <button type="submit">Guardar</button>
-              </div>
             </form>
+
           </div>
         </div>
       )}

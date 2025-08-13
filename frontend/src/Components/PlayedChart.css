@@ -9,7 +9,7 @@
 
 .Bar_Tex{   
     margin-bottom: 30px;
-    color: #9CA3AF;
+    color: var(--Title_Sec);
     font-size: 20px;
     font-weight: 400;
 }
@@ -21,7 +21,7 @@
 }
 
 .Bar_Subtitle{
-    color: #E5E7EB;
+    color: #fff;
     margin-top: 0px;
     font-weight: 500;
     font-size: 20px;
@@ -29,11 +29,12 @@
 
 .barra {
     width: 100%;
-    background-color: #374151;
+    background-color: var(--Barra);
     border-radius: 10px;
     overflow: hidden;
-    height: 15px;
-    margin-bottom: 20px;
+    height: 18px;
+    margin: 5px 0;
+    margin-bottom: 15px;
 }
 
 .barra-progreso {
@@ -42,7 +43,7 @@
 }
 
 .Bar_Subtex{
-    color: #9CA3AF;
+    color: var(--Title_Sec);
     margin-top: -10px;
     font-size: 16px;
     font-weight: 500;
@@ -50,7 +51,7 @@
 
 .separator {
   height: 1px;
-  background-color: #3c4452;
+  background-color: var(--bordes);
   margin: 20px 0 10px 0;
 }
 
@@ -75,19 +76,10 @@
 }
 
 .SubIdent{
-    color: #9CA3AF;
+    color: var(--Title_Sec);
     margin-top: -35px;
     font-size: 16px;
     font-weight: 500;
-}
-
-.barra {
-  background-color: #2e3747;
-  border-radius: 10px;
-  height: 18px;
-  overflow: hidden;
-  margin: 5px 0;
-  margin-bottom: 15px;
 }
 
 .barra-progreso {
@@ -97,9 +89,9 @@
 }
 
 .barra-progreso.verde {
-    background-color: #22c55e;
+    background-color: var(--Verde);
 }
 
 .barra-progreso.azul {
-  background-color: #6293ff;
+  background-color: var(--Azul);
 }

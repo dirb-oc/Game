@@ -29,10 +29,7 @@ const PlayedChart = ({ games }) => {
             <span className="Bar_Tex">{Empezados} de {Total}</span>
           </div>
           <div className="barra">
-            <div
-              className="barra-progreso verde"
-              style={{ width: `${anchoEmpezados}%` }}
-            />
+            <div className="barra-progreso verde" style={{ width: `${anchoEmpezados}%` }} />
           </div>
           <p className="Bar_Subtex">{Porcentaje_Empezados}% de la colección</p>
         
@@ -48,7 +45,7 @@ const PlayedChart = ({ games }) => {
           </div>
           <p className="Bar_Subtex">{Porcentaje_Terminado}% Completado</p>
         
-          <div className="separator"></div>
+          <div className="separator" />
           <div className="Numbers">
             <div className="Number">
               <p className="Ident" style={{ color: "#22c55e" }}>{Empezados}</p>

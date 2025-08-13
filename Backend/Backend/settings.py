@@ -17,8 +17,6 @@ from dotenv import load_dotenv
 ENV_PATH = Path(__file__).resolve().parent.parent.parent
 load_dotenv(ENV_PATH / ".env")
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 PG_USER = os.getenv("PG_USER")
 PG_PASSWORD = os.getenv("PG_PASSWORD")
 PG_HOST = os.getenv("PG_HOST")
