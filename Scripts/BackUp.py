@@ -29,14 +29,39 @@ def autenticar_drive():
     gauth = GoogleAuth()
     gauth.LoadClientConfigFile(GOOGLE_SECRET_PATH)
 
+    gauth.settings['get_refresh_token'] = True
+    gauth.settings['oauth_scope'] = [
+        "https://www.googleapis.com/auth/drive",
+        "https://www.googleapis.com/auth/drive.file"
+    ]
+
     if os.path.exists(GOOGLE_TOKEN_PATH):
         gauth.LoadCredentialsFile(GOOGLE_TOKEN_PATH)
 
-    if gauth.access_token_expired or not gauth.credentials:
+    try:
+        if gauth.credentials is None:
+            print("🔑 No se encontró token, iniciando autenticación...")
+            gauth.LocalWebserverAuth()
+            gauth.SaveCredentialsFile(GOOGLE_TOKEN_PATH)
+
+        elif gauth.access_token_expired:
+            print("♻️ Token caducado, intentando refrescar...")
+            gauth.Refresh()
+            gauth.SaveCredentialsFile(GOOGLE_TOKEN_PATH)
+
+    except Exception as e:
+        print(f"⚠️ Error con el token: {e}")
+        print("🗑️ Eliminando token roto y solicitando autenticación nueva...")
+        if os.path.exists(GOOGLE_TOKEN_PATH):
+            os.remove(GOOGLE_TOKEN_PATH)
+
+        # 🚨 Resetear credenciales para evitar que PyDrive intente refrescar de nuevo
+        gauth.credentials = None  
+
         gauth.LocalWebserverAuth()
-        gauth.settings['get_refresh_token'] = True
         gauth.SaveCredentialsFile(GOOGLE_TOKEN_PATH)
 
+    print("✅ Autenticación con Google Drive lista")
     return GoogleDrive(gauth)
 
 def obtener_backups_local():
@@ -60,7 +85,7 @@ def backup_es_antiguo(archivo_local):
     return datetime.now() - mod_time > timedelta(days=DIAS_MINIMO)
 
 def crear_backup():
-    fecha_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+    fecha_str = datetime.now().strftime("%Y%m%d")
     nombre_archivo = RESPALDO_DIR / f"{DB_NAME}_{fecha_str}.backup"
 
     comando = [
