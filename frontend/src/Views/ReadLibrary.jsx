@@ -31,9 +31,20 @@ const ReadLibrary = () => {
   const totalHoras = games.reduce((acc, g) => acc + Number(g.tiempo), 0);
   const totalAlmacenamiento = games.reduce((acc, g) => acc + Number(g.almacenamiento), 0);
   
-  const porcentajeHoras =  game.tiempo > 0 ? ((game.tiempo / totalHoras) * 100).toFixed(1) : "0";
-  const porcentajePrecio = game.precio > 0 ? ((game.precio / totalPrecio) * 100).toFixed(1) : "0";
-  const porcentajeAlma = game.almacenamiento > 0 ? ((game.almacenamiento / totalAlmacenamiento) * 100).toFixed(1) : "0";
+ const porcentajeHoras =
+  totalHoras > 0 && game.tiempo > 0
+    ? ((game.tiempo / totalHoras) * 100).toFixed(1)
+    : "0.0";
+
+const porcentajePrecio =
+  totalPrecio > 0 && game.precio > 0
+    ? ((game.precio / totalPrecio) * 100).toFixed(1)
+    : "0.0";
+
+const porcentajeAlma =
+  totalAlmacenamiento > 0 && game.almacenamiento > 0
+    ? ((game.almacenamiento / totalAlmacenamiento) * 100).toFixed(1)
+    : "0.0";
 
   const valorPorHora = () => {
     if (game.precio == 0) return "$0";
@@ -145,5 +156,3 @@ const ReadLibrary = () => {
 };
 
 export default ReadLibrary;
-
-//  

@@ -59,7 +59,7 @@
   padding: 10px 30px;
   border-radius: 10px;
   min-width: 750px;
-  max-height: 840px;
+  max-height: 90%;
   overflow-y: auto;
   color: white;
   animation: fadeInScale 0.3s ease-out forwards;

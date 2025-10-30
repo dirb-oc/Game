@@ -15,12 +15,15 @@
 .buscador-input {
   background-color: var(--Input);
   color: var(--Title_Sec);
-  width: 700px;
+  width: 50%; /* ocupa la mitad del Tool_Group */
+  min-width: 450px; /* evita que se vuelva muy pequeño en pantallas chicas */
+  max-width: 600px; /* límite superior */
   padding: 10px 12px 10px 32px;
   border: 1px solid var(--bordes);
   border-radius: 10px;
   font-size: 18px;
   outline: none;
+  flex: 1; /* permite adaptarse dentro del flex */
 }
 
 .buscador-input::placeholder {

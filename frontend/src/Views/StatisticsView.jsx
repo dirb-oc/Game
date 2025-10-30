@@ -84,7 +84,6 @@ const StatisticsView = () => {
             <div className="Tarjet_Container_L">
                 <div className="Tarjet_L">
                     <ValuePerHourChart  games={games} />
-                    
                 </div> 
                 <div className="Tarjet_L">
                     <TopPlayedChart games={games} />

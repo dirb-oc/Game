@@ -16,7 +16,7 @@ const Card = ({ image, title, genres, year, time, finished, price, storage, styl
           <h3 className="Card_Title">{title}</h3>
           <p className="Year_Realese">{lanzamiento}</p>
         </div>
-        {genres.slice(0, 3).map((g, i) => (
+        {genres.slice(0, 2).map((g, i) => (
           <span key={i} className="Genres">
             {g.genero}{i < genres.length - 1}
           </span>

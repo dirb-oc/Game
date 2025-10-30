@@ -27,7 +27,7 @@ const PriceChart = ({ games }) => {
     <div className="Price_container">
       <h2 className="Price_title">Distribución de Precios</h2>
       <p className="Price_subtitle">Cantidad de juegos por rango de precio</p>
-      <ResponsiveContainer height={280} style={{marginLeft: '30px'}}>
+      <ResponsiveContainer height={280} style={{marginLeft: '-20px'}}>
         <BarChart data={sortedData}>
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
           <XAxis dataKey="range" stroke="#E5E7EB" />

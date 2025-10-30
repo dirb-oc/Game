@@ -80,6 +80,7 @@ const LibraryView = () => {
           <Link to="/deseados" className="Wish"> Deseados</Link>.
         </p>
       </div>
+      
       <div className="Menu_Tool">
         <div className="Tool_Group">
           <Buscador onChange={(e) => setSearchTerm(e.target.value)} />

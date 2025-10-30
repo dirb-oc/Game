@@ -120,7 +120,7 @@
 }
 
 .ReadDescription{
-  margin: 0px 35px 0 35px;
+  margin: 0px 35px;
   font-size: 23px;
   font-weight: 400;
   color: var(--Title_Sec);
@@ -129,7 +129,8 @@
 .Porcent_Game{
   display: flex;
   justify-content: space-between;
-  margin: 30px 80px;
+  margin: 25px 10%;
+  margin-bottom: 30px;
 }
 
 .GamePorcent{

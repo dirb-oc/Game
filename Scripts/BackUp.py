@@ -89,7 +89,7 @@ def crear_backup():
     nombre_archivo = RESPALDO_DIR / f"{DB_NAME}_{fecha_str}.backup"
 
     comando = [
-        "C:\\Program Files\\PostgreSQL\\17\\bin\\pg_dump.exe",
+        "C:\\Program Files\\PostgreSQL\\18\\bin\\pg_dump.exe",
         "-U", PG_USER,
         "-h", PG_HOST,
         "-p", PG_PORT,

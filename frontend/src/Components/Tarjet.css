@@ -4,22 +4,23 @@
 }
 
 .Tarjet_Container{
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    margin: 15px 150px 15px 150px;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 15px 10%;
 }
 
 .Tarjet_Container_L{
-    grid-template-columns: repeat(auto-fill, minmax(785px, 1fr));
-    margin: 30px 150px 15px 150px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 30px 10%;
+    margin-bottom: 15px;
 }
 
 .Tarjet_Container_C{
-    margin: 30px 155px 20px 150px;
+    margin: 25px 10%;
 }
 
 .ContainerT_LM{
     display: flex;
-    margin: 30px 155px 20px 150px;
+    margin: 25px 150px 20px 150px;
  }
 
 
@@ -30,17 +31,17 @@
 }
 
 .Tarjet{
-    width: 380px;
+    width: 100%;
     height: 150px;
 }
 
 .Tarjet_L{
-    width: 788px;
+    width: 100%;
     height: 450px;
 }
 
 .Tarjet_LM{
-    width: 1010px;
+    width: 100%;
     height: 310px;
 }
 
@@ -60,13 +61,13 @@
     justify-content: space-between;
     align-items: center;
     height: 65px;
-    margin: 0 35px;
+    margin: 0 25px;
     padding: 0;
 }
 
 .Tarjet_Head p{
     color: var(--Title);
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 500;
 }
 
@@ -78,7 +79,7 @@
 }
 
 .Tarjet_Content{
-    margin: 0 35px;
+    margin: 0 25px;
 }
 
 .Value{

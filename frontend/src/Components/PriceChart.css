@@ -2,7 +2,6 @@
   background-color: var(--Card);
   border-radius: 12px;
   padding: 20px 35px;
-  width: 600px;
   height: 410px;
   color: white;
 }
@@ -21,5 +20,5 @@
   margin-top: 0px;
   font-weight: 400;
   font-size: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
 }
