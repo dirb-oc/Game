@@ -6,7 +6,11 @@ router = DefaultRouter()
 router.register(r'generos', GenresViewSet)
 router.register(r'libreria', LibraryViewSet)
 router.register(r'deseados', WishViewSet)
+router.register(r'sesiones', PlaySessionViewSet)
+router.register(r'logros', AchievementProgressViewSet)
+router.register(r'stats', StatsViewSet, basename='stats')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('stats/<int:year>/<int:month>/',StatsViewSet.as_view({'get': 'month'}))
 ]

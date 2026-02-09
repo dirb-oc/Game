@@ -55,83 +55,99 @@ export const Multi_Styles = {
       borderColor: '#6B7280',
     },
   }),
+
   singleValue: (base) => ({
     ...base,
     color: 'white',
   }),
+
   menu: (base) => ({
     ...base,
     backgroundColor: '#1F2937',
     borderRadius: '8px',
     marginTop: '4px',
   }),
+
+  /* 👇 AQUÍ está el scroll */
+  menuList: (base) => ({
+  ...base,
+  maxHeight: '200px',
+  overflowY: 'auto',
+
+  scrollbarWidth: 'thin',
+  scrollbarColor: '#3f3f46 #0c0c14',
+
+  '::-webkit-scrollbar': {
+    width: '8px',
+  },
+  '::-webkit-scrollbar-track': {
+    background: '#0c0c14',
+  },
+  '::-webkit-scrollbar-thumb': {
+    background: '#3f3f46',
+    borderRadius: '4px',
+  },
+
+  /* 🔥 quita las flechas */
+  '::-webkit-scrollbar-button': {
+    display: 'none',
+  },
+}),
+
+
   option: (base, state) => ({
     ...base,
     backgroundColor: state.isFocused ? '#374151' : '#1F2937',
     color: 'white',
     cursor: 'pointer',
   }),
+
   dropdownIndicator: (base) => ({
     ...base,
     color: 'white',
   }),
+
   indicatorSeparator: () => ({
     display: 'none',
   }),
+
   input: (base) => ({
     ...base,
     color: 'white',
   }),
+
   placeholder: (base) => ({
     ...base,
     color: 'white',
   }),
 
   multiValue: (base) => ({
-  ...base,
-  backgroundColor: '#2563EB',
-  borderRadius: '6px',
-  padding: '2px 6px',
-  display: 'flex',
-  alignItems: 'center',
-  marginRight: '4px',
-}),
+    ...base,
+    backgroundColor: '#2563EB',
+    borderRadius: '6px',
+    padding: '2px 6px',
+    display: 'flex',
+    alignItems: 'center',
+    marginRight: '4px',
+  }),
 
-multiValueLabel: (base) => ({
-  ...base,
-  color: 'white',
-  fontWeight: '500',
-  fontSize: '14px',
-}),
-
-multiValueRemove: (base) => ({
-  ...base,
-  color: 'white',
-  cursor: 'pointer',
-  ':hover': {
-    backgroundColor: '#1E40AF',
+  multiValueLabel: (base) => ({
+    ...base,
     color: 'white',
-  },
-}),
+    fontWeight: '500',
+    fontSize: '14px',
+  }),
+
+  multiValueRemove: (base) => ({
+    ...base,
+    color: 'white',
+    cursor: 'pointer',
+    ':hover': {
+      backgroundColor: '#1E40AF',
+      color: 'white',
+    },
+  }),
 };
-
-export function convertirHorasADiasYHoras(horasTotales) {
-  const dias = Math.floor(horasTotales / 24);
-  const horas = Math.floor(horasTotales % 24);
-
-  let resultado = "";
-
-  if (dias > 0) {
-    resultado += `${dias} ${dias === 1 ? "día" : "días"}`;
-  }
-
-  if (horas > 0) {
-    if (dias > 0) resultado += " y ";
-    resultado += `${horas} ${horas === 1 ? "hora" : "horas"}`;
-  }
-
-  return resultado || "Pendiente";
-}
 
 export function formatoMoneda(valor) {
   return Number(valor).toLocaleString("es-CO", {

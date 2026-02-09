@@ -20,6 +20,7 @@
   padding: 0 20px;
   cursor: pointer;
   transition: 0.7s;
+  width: 150px;
 }
 
 .Create:hover, .Edit:hover{
@@ -27,19 +28,14 @@
   color: var(--Azul);
 }
 
-.Content_Edit{
-  display: flex;
-  margin:20px 20px;
-  justify-content: end;
-}
-
 .Edit{
-  background: var(--Azul);
-  border: var(--Azul);
-  color: white;
-  border-radius: 10px;
+  background: transparent;
+  border: 1px solid #555;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
   font-weight: 600;
-  padding: 10px 20px;
   cursor: pointer;
   transition: .5s;
 }
@@ -56,7 +52,6 @@
 
 .Modal {
   background: var(--Card);
-  padding: 10px 30px;
   border-radius: 10px;
   min-width: 750px;
   max-height: 90%;
@@ -79,6 +74,10 @@
   color: var(--Title_Sec);
 }
 
+.Form{
+  padding: 10px 30px;
+}
+
 .Form input, .Form textarea{
   background: var(--Input);
   color: #fff;
@@ -93,14 +92,14 @@
 
 .Form textarea{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  height: 100px;
+  height: 70px;
 }
 
 label{
   color: var(--Label);
   font-size: 18px;
   font-weight: 500;
-  margin: 5px 0 8px 0;
+  margin: 5px 0;
 }
 
 .separator {
@@ -111,7 +110,8 @@ label{
 
 .Selector{
   margin-left: 0;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .FormButtons {
@@ -137,34 +137,6 @@ label{
   background-color: var(--Not);
 }
 
-.Image, .ImageP {
-  margin-top: 10px;
-  border: 2px solid var(--bordes);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.Image{
-  width: 500px;
-  height: 200px;
-}
-
-.ImageP{
-  width: 190px;
-  height: 230px;
-}
-
-.Image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
 .placeholder-text {
   color: var(--Bordes);
   font-size: 14px;
@@ -172,62 +144,11 @@ label{
 }
 
 
-.switch-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 46px;
-  height: 24px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  background-color: #4B5563;
-  border-radius: 24px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.4s;
-}
-
-.slider::before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  border-radius: 50%;
-  transition: 0.4s;
-}
-
-/* Checked styles */
-.switch input:checked + .slider {
-  background-color: #3b82f6; /* azul tipo Tailwind */
-}
-
-.switch input:checked + .slider::before {
-  transform: translateX(22px);
-}
-
 .Box_Group {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 5px;
 }
 
 .Element_Group {
@@ -235,6 +156,17 @@ label{
   flex-direction: column;
   flex: 1;
 }
+
+.Element_Group label, .Label_Modal{
+  color: rgb(180, 180, 180);
+  font-size: 14px;
+}
+
+.Element_Group .value{
+  font-size: 14px;
+  font-weight: 700;
+}
+
 
 @keyframes fadeInScale {
   from {
@@ -246,3 +178,53 @@ label{
     transform: scale(1);
   }
 }
+
+.ImageWrapper {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.Image {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px var(--bordes) solid;
+}
+
+.Image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ImageP {
+  border: 2px solid var(--bordes);
+  border-radius: 8px;
+  background: var(--Card);
+  position: absolute;
+  left: 20px;
+  bottom: -40px;
+  width: 190px;
+  height: 230px;
+  overflow: hidden;
+}
+
+.ImageP img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+input.nombreGame {
+  background-color: var(--Card);
+  padding: 0;
+  border: none;
+  border-radius: none;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+

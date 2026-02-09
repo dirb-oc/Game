@@ -123,7 +123,7 @@ if not RESPALDO_DIR.exists():
     RESPALDO_DIR.mkdir(parents=True, exist_ok=True)
     print(f"📂 Carpeta local creada: {RESPALDO_DIR}")
 else:
-    print(f"📂 Carpeta local existente: {RESPALDO_DIR}")
+    print(f"📂 Carpeta local: {RESPALDO_DIR}")
 
 drive = autenticar_drive()
 

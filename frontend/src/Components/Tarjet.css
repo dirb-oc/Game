@@ -20,7 +20,7 @@
 
 .ContainerT_LM{
     display: flex;
-    margin: 25px 150px 20px 150px;
+    margin: 25px 10% 20px 10%;
  }
 
 
@@ -38,22 +38,24 @@
 .Tarjet_L{
     width: 100%;
     height: 450px;
+    overflow: hidden;
 }
 
 .Tarjet_LM{
     width: 100%;
-    height: 310px;
+    min-height: 310px;
 }
 
 
 .Tarjet_C{
+    overflow: hidden;
     width: 100%;
     height: 550px; 
 }
 
 .Tarjet_S{
     width: 600px;
-    height: 310px; 
+    min-height: 310px; 
 }
 
 .Tarjet_Head{

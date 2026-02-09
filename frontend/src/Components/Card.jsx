@@ -1,11 +1,10 @@
 import { FaRegClock } from "react-icons/fa";
 import "./Card.css";
 
-const Card = ({ image, title, genres, year, time, finished, price, storage, style = {}}) => {
+const Card = ({ image, title, genres, year, time, DateF, price, storage, style = {}}) => {
   const Tiempo = time > 0 ? `${parseFloat(time)} ${time == 1 ? "Hora" : "Horas"}`: "----";
   const Precio = price == 0 ? "Gratis" : `$${Number(price).toLocaleString("es-CO")}`;
-  const Estado = finished ? "Terminado": time > 0 ? "Empezado" : "Sin_Jugar";
-  const Descripcion = finished ? "Terminado" : time > 0 ? "Jugando" : "Sin Jugar";
+  const Estado = DateF ? "Terminado" : time > 0 ? "Jugando" : "Sin_Jugar";
   const lanzamiento = new Date(year).getFullYear();
 
   return (
@@ -25,7 +24,7 @@ const Card = ({ image, title, genres, year, time, finished, price, storage, styl
           <p className="Time">
             <span className="Icon"><FaRegClock /></span>{Tiempo}
           </p>
-          <p className={`Status ${Estado}`}>{Descripcion}</p>
+          <p className={`Status ${Estado}`}>{Estado.replace("_", " ")}</p>
         </div>
         <div className="Card_Data">
           <p>{Precio}</p>

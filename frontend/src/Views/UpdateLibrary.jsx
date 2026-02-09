@@ -10,6 +10,7 @@ const UpdateLibrary = ({ game }) => {
   const [form, setForm] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const yearInputRef = useRef(null);
+  const [preview, setPreview] = useState({imagen: null,imagenP: null,});
 
   useEffect(() => {
     loadGenres(setGenres);
@@ -17,6 +18,10 @@ const UpdateLibrary = ({ game }) => {
 
   useEffect(() => {
     if (game) {
+      setPreview({
+      imagen: game.imagen || null,
+      imagenP: game.imagenP || null,
+    });
       setForm({
         nombre: game.nombre,
         lanzamiento: new Date(game.lanzamiento).getFullYear(),
@@ -37,15 +42,12 @@ const UpdateLibrary = ({ game }) => {
         descripcion: game.descripcion || "",
       });
     }
+    
   }, [game]);
 
   if (!form) return <button className="Create" disabled>Cargando...</button>;
 
   const genreOptions = genres.map(g => ({ value: g.id, label: g.genero }));
-
-  const handleInputChange = (name, value) => {
-    setForm(prev => ({ ...prev, [name]: value }));
-  };
 
   const handleFormattedPriceChange = (e) => {
     const raw = e.target.value.replace(/\D/g, "");
@@ -73,28 +75,51 @@ const UpdateLibrary = ({ game }) => {
     if (year >= 1970 && year <= new Date().getFullYear()) input.setCustomValidity("");
   };
 
+  const handlePasteImage = (e, field) => {
+    const items = e.clipboardData.items;
+    for (let item of items) {
+      if (item.type.startsWith("image/")) {
+        const file = item.getAsFile();
+
+        setForm(prev => ({
+          ...prev,
+          [field]: file,
+        }));
+        setPreview(prev => ({
+          ...prev,
+          [field]: URL.createObjectURL(file),
+        }));
+      }
+    }
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const dataToSend = {
-      nombre: form.nombre,
-      lanzamiento: `${form.lanzamiento}-02-01`,
-      precio: parseFloat(form.precio) || 0,
-      almacenamiento: parseFloat(form.almacenamiento) || 0,
-      tiempo: parseFloat(form.tiempo) || 0,
-      logros_Cantidad: form.logros_Cantidad || null,
-      logros_Completados: form.logros_Completados || null,
-      terminado: form.terminado,
-      generos_ids: form.generos,
-      imagen: form.imagen,
-      imagenP: form.imagenP,
-      descripcion: form.descripcion,
-    };
+    const formData = new FormData();
+
+formData.append("nombre", form.nombre);
+formData.append("lanzamiento", `${form.lanzamiento}-02-01`);
+formData.append("precio", parseFloat(form.precio) || 0);
+formData.append("almacenamiento", parseFloat(form.almacenamiento) || 0);
+formData.append("descripcion", form.descripcion || "");
+
+form.generos.forEach(id => formData.append("generos_ids", id));
+
+// ⚠️ solo enviar imagen si es File
+if (form.imagen instanceof File) {
+  formData.append("imagen", form.imagen);
+}
+
+if (form.imagenP instanceof File) {
+  formData.append("imagenP", form.imagenP);
+}
 
     try {
-      await updateGame(game.id, dataToSend);
+      await updateGame(game.id, formData);
       window.location.reload();
-      setModalOpen(false)();
+      setModalOpen(false);
     } catch (error) {
     }
   };
@@ -103,101 +128,64 @@ const UpdateLibrary = ({ game }) => {
 
   return (
     <>
-    <div className="Content_Edit">
-      <button className="Edit" onClick={() => setModalOpen(true)}>Editar Juego</button>
-    </div>
+      <div className="Content_Edit">
+        <button className="Edit" onClick={() => setModalOpen(true)}>Editar</button>
+      </div>
 
-    {modalOpen && (
-    <div className="background" onClick={() => setModalOpen(false)}>
-      <div className="Modal" onClick={(e) => e.stopPropagation()}>
-        <h3>Editar Videojuego</h3>
-        <p>Cambia la información del videojuego</p>
+      {modalOpen && (
+        <div className="background" onClick={() => setModalOpen(false)}>
+          <div className="Modal" onClick={(e) => e.stopPropagation()}>
+            <div className="ImageWrapper">
+              <div className="Image">
+                {preview.imagen ? (
+                  <img src={preview.imagen} alt="Vista previa" />
+                ) : (
+                  <span className="placeholder-text">Vista previa</span>
+                )}
+              </div>
+          
+              <div className="ImageP">
+                {preview.imagenP ? (
+                  <img src={preview.imagenP} alt="Vista previa" />
+                ) : (
+                  <span className="placeholder-text">Vista previa</span>
+                )}
+              </div>
+            </div>
+
         <form onSubmit={handleSubmit} className="Form">
-              <div className="Box_Group">
-                <div className="Element_Group">
-                  <label>Nombre del Juego</label>
-                  <input type="text"
-                    name="nombre"
-                    placeholder="Nombre"
-                    value={form.nombre}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-        
-                <div className="Element_Group">
-                  <label>Año de lanzamiento</label>
-                  <input type="number"
-                    ref={yearInputRef}
-                    name="lanzamiento"
-                    placeholder="2019"
-                    value={form.lanzamiento}
-                    onChange={handleYearInput}
-                    required
-                  />
-                </div>
-              </div>
+          <input type="text"
+            name="nombre"
+            className="nombreGame"
+            placeholder="Nombre"
+            value={form.nombre}
+            onChange={handleChange}
+            required
+          />
+          <div className="Box_Group">
+            <div className="Element_Group">
+              <label>Lanzamiento</label>
+              <input className="value" type="number" ref={yearInputRef} name="lanzamiento" placeholder="2019" value={form.lanzamiento} onChange={handleYearInput} required />
+            </div>
+            <div className="Element_Group">
+              <label>Precio</label>
+              <input className="value" type="text" name="precio" value={form.precioFormatted} onChange={handleFormattedPriceChange} required />
+            </div>
 
-              <div className="Box_Group">
-                <div className="Element_Group">
-                  <label>Precio</label>
-                  <input
-                    type="text"
-                    name="precio"
-                    value={form.precioFormatted}
-                    onChange={handleFormattedPriceChange}
-                  />
-                </div>
-                <div className="Element_Group">
-                  <label>Almacenamiento</label  >
-                  <input type="number" name="almacenamiento" value={form.almacenamiento} onChange={handleChange} />
-                </div>
-              </div>
+            <div className="Element_Group">
+              <label>Almacenamiento</label  >
+              <input className="value" type="number" name="almacenamiento" value={form.almacenamiento} onChange={handleChange} required />
+            </div>
 
-              <div class="separator" />
+            <div className="Element_Group">
+              <label>Logros</label>
+              <input className="value" type="number" name="logros_Cantidad" value={form.logros_Cantidad} onChange={handleChange} />
+            </div>
+          </div>
 
-              <div className="Box_Group">
-                <div className="Element_Group">
-                  <label>Tiempo jugado</label>
-                  <input type="number" name="tiempo" value={form.tiempo} onChange={handleChange} />
-                </div>
-                <div className="Element_Group">
+          <div class="separator" />
 
-                  <label>Estado</label>
-              <div className="switch-wrapper">
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    checked={form.terminado}
-                    onChange={(e) => handleInputChange("terminado", e.target.checked)}
-                  />
-                  <span className="slider"></span>
-                </label>
-                <span className="switch-label">
-                  {form.terminado ? "Terminado" : "Sin terminar"}
-                </span>
-              </div>
-                </div>
-              </div>
-
-              <div class="separator" />
-
-              <div className="Box_Group">
-                <div className="Element_Group">
-                  <label>Logros - Total</label>
-                  <input type="number" name="logros_Cantidad" value={form.logros_Cantidad} onChange={handleChange} />
-                </div>
-                
-                <div className="Element_Group">
-                  <label>Logros - Completados</label>
-                  <input type="number" name="logros_Completados" value={form.logros_Completados} onChange={handleChange} />
-                </div>
-                
-              </div>
-
-              <div class="separator" />
-
-              <label>Géneros</label>
+              <label className="Label_Modal">Géneros</label>
               <Select options={genreOptions}
                 styles ={Multi_Styles}
                 isMulti
@@ -206,41 +194,60 @@ const UpdateLibrary = ({ game }) => {
                 className="Selector"
                 placeholder="Seleccionar géneros"
               />
-
-              <div class="separator" />
               
               <div className="Element_Group">
                 <label>Descripcion</label>
                 <textarea type="text" name="descripcion" value={form.descripcion} onChange={handleChange} placeholder="Descripcion del juego"/>
               </div>
 
-              <div class="separator" />
-              
-              <div className="Element_Group">
+              <div className="Box_Group">
+                <div className="Element_Group">
                 <label>Banner</label>
-                <input type="text" name="imagen" value={form.imagen} onChange={handleChange} placeholder="https://ejemplo.com/banner.jpg"/>
-                <div className="Image">
-                  {form.imagen ? (
-                    <img src={form.imagen} alt="Vista previa" />
-                  ) : (
-                    <span className="placeholder-text">Vista previa</span>
-                  )}
-                </div>
-              </div>
+                <div
+  className="ImageInput"
+  onPaste={(e) => handlePasteImage(e, "imagen")}
+  tabIndex={0}
+>
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => {
+      const file = e.target.files[0];
+      if (!file) return;
 
-              <div class="separator" />
-              
+      setForm(prev => ({ ...prev, imagen: file }));
+      setPreview(prev => ({ ...prev, imagen: URL.createObjectURL(file) }));
+    }}
+  />
+  <small>Pega, arrastra o selecciona una imagen</small>
+</div>
+
+
+              </div>
               <div className="Element_Group">
                 <label>Portada</label>
-                <input type="text" name="imagenP" value={form.imagenP} onChange={handleChange} placeholder="https://ejemplo.com/portada.jpg"/>
-                <div className="ImageP">
-                  {form.imagenP ? (
-                    <img src={form.imagenP} alt="Vista previa" />
-                  ) : (
-                    <span className="placeholder-text">Vista previa</span>
-                  )}
-                </div>
+                <div
+  className="ImageInput"
+  onPaste={(e) => handlePasteImage(e, "imagenP")}
+  tabIndex={0}
+>
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      setForm(prev => ({ ...prev, imagenP: file }));
+      setPreview(prev => ({ ...prev, imagenP: URL.createObjectURL(file) }));
+    }}
+  />
+  <small>Pega, arrastra o selecciona una imagen</small>
+</div>
+
               </div>
+              </div>
+              
               <div className="FormButtons">
                 <button type="button" onClick={() => setModalOpen(false)}>Cancelar</button>
                 <button type="submit">Guardar</button>

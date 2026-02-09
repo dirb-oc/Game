@@ -5,20 +5,67 @@
 }
 
 .chart-title {
+  margin-top: 3px;
   font-size: 22px;
   margin-bottom: 4px;
   color: #f3f4f6;
 }
 
-.PerHound_subtitle {
+.Pr_subtitle {
   color: #9CA3AF;
   margin-top: 0px;
   font-weight: 400;
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .Valor{
   color: white;
-  font-weight: 500;
+  font-weight: 800;
+}
+
+.chart-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chart-area {
+  flex: 1;
+  min-width: 0;
+}
+
+/* TABLA MINI */
+.mini-table {
+  margin-right: 50px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mini-row {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #e5e7eb;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.range {
+  opacity: 0.85;
+  margin-right: 10px;
+}
+
+.count {
+  font-weight: 800;
 }

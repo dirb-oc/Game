@@ -37,7 +37,7 @@ const LibraryView = () => {
       case "Lanzamiento":
         return copia.sort((a, b) => new Date(b.lanzamiento) - new Date(a.lanzamiento));
       case "Horas":
-        return copia.sort((a, b) => b.tiempo - a.tiempo);
+        return copia.sort((a, b) => b.total_horas - a.total_horas);
       case "Precios":
         return copia.sort((a, b) => b.precio - a.precio);
       case "Almacenamiento":
@@ -50,11 +50,11 @@ const LibraryView = () => {
   const filtrarJuegos = (lista, filtro) => {
     switch (filtro) {
       case "Terminados":
-        return lista.filter(j => j.terminado);
+        return lista.filter(j => j.fecha_terminado);
       case "Jugando":
-        return lista.filter(j => j.tiempo > 0 && !j.terminado);
+        return lista.filter(j => j.total_horas > 0 && !j.fecha_terminado);
       case "Sin jugar":
-        return lista.filter(j => j.tiempo == 0 || j.tiempo == false);
+        return lista.filter(j => j.total_horas == 0 || j.total_horas == false);
       default:
         return lista;
     }
@@ -69,7 +69,6 @@ const LibraryView = () => {
   );
 
   useEffect(() => {loadGames(setGames);},[]);
-
   return (
     <>
       <div className="Title">
@@ -109,12 +108,12 @@ const LibraryView = () => {
               style={{ animationDelay: `${i * 50}ms` }}
               id={game.id}
               year={game.lanzamiento}
-              time={game.tiempo}
+              time={game.total_horas}
               image={game.imagen}
               title={game.nombre}
               price={game.precio}
               genres={game.J_genero}
-              finished={game.terminado}
+              DateF={game.fecha_terminado}
               storage={game.almacenamiento}
             />
           </Link>

@@ -1,74 +1,52 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getGameById } from "../Controller/libraryController";
-import { loadGames } from "../Controller/libraryController";
-import { FaChevronLeft, FaTrophy  } from "react-icons/fa";
-import { MdOutlineAttachMoney, MdOutlineStorage, MdAccessTime } from "react-icons/md";
-import {convertirHorasADiasYHoras} from "../Utils/Utils";
+import { MdOutlineStorage, MdOutlineAccessTimeFilled } from "react-icons/md";
+import { FaChevronLeft, FaCalendarAlt, FaTags  } from "react-icons/fa";
+import { HiCurrencyDollar } from "react-icons/hi2";
+import { GoTrophy } from "react-icons/go";
 import UpdateLibrary from "./UpdateLibrary";
-import Tarjet from "../Components/Tarjet"
+import HoursModal from "../Components/HoursModal";
+import ArchiModal from "../Components/ArchiModal";
+import DateModal from "../Components/DateModal";
 import "../Components/Read.css";
 
 const ReadLibrary = () => {
   const { id } = useParams();
-  const [game, setGame] = useState(null);
-  const [games, setGames] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getGameById(id).then(setGame).catch(() => alert("Error al cargar juego"));
-    loadGames(setGames);
-  }, [id]);
-
-  if (!game) return <p className="Loading"></p>;
-
-  const Estado = game.terminado ? "Terminado" : game.tiempo > 0 ? "Empezado" : "Sin_Jugar";
-  const Descripcion = game.terminado ? "Terminado" : game.tiempo > 0 ? "Jugando" : "Sin Jugar";
-  const Dias = convertirHorasADiasYHoras(game.tiempo);
-  const Precio = game.precio == 0 ? "Gratis" : `$${Number(game.precio).toLocaleString("es-CO")}`;
-  const Tiempo = game.tiempo > 0 ? `${parseFloat(game.tiempo)} ${game.tiempo == 1 ? "Hora" : "Horas"}`: "Sin Registro";
-  const totalPrecio = games.reduce((acc, g) => acc + Number(g.precio), 0);
-  const totalHoras = games.reduce((acc, g) => acc + Number(g.tiempo), 0);
-  const totalAlmacenamiento = games.reduce((acc, g) => acc + Number(g.almacenamiento), 0);
-  
- const porcentajeHoras =
-  totalHoras > 0 && game.tiempo > 0
-    ? ((game.tiempo / totalHoras) * 100).toFixed(1)
-    : "0.0";
-
-const porcentajePrecio =
-  totalPrecio > 0 && game.precio > 0
-    ? ((game.precio / totalPrecio) * 100).toFixed(1)
-    : "0.0";
-
-const porcentajeAlma =
-  totalAlmacenamiento > 0 && game.almacenamiento > 0
-    ? ((game.almacenamiento / totalAlmacenamiento) * 100).toFixed(1)
-    : "0.0";
-
-  const valorPorHora = () => {
-    if (game.precio == 0) return "$0";
-    if (game.tiempo == 0) return "No jugado";
-    const valor = parseInt(game.precio / game.tiempo);
-        return `$${Number(valor).toLocaleString("es-CO")}`
+  const [game, setGame] = useState(null);
+  const [Archi, setArchi] = useState(0);
+  const [hours, setHours] = useState(0);
+  const fetchGame = async () => {
+    try {
+      const data = await getGameById(id);
+      setGame(data);
+    } catch {
+      alert("Error al cargar juego");
+    }
   };
 
-  let Subvalue;
-  let Value;
-  const cantidad = Number(game.logros_Cantidad);
-  const completados = Number(game.logros_Completados);
-    
-  if (!cantidad || isNaN(cantidad) || cantidad === 0) {
-    Value = "No tiene logros";
-    Subvalue = "No aplica";
-  } else if (cantidad == completados) {
-    Value = (<span className="Amarillo">COMPLETADO!</span>)
-    Subvalue = `Todos los logros obtenidos`;
-  } else {
-    const porcentaje = Math.round((completados / cantidad) * 100) || 0;
-    Value = ( <> {completados} <span className="Amarillo">/</span> {cantidad} </> );
-    Subvalue = `${porcentaje}% Completados`;
-  }
+  useEffect(() => {fetchGame();}, [id]);
+  useEffect(() => { 
+    if (!game) return; 
+    setHours(game.total_horas); 
+    setArchi(game.logros_completados); 
+    setInitialHours(game.total_horas); 
+  }, [game]);
+
+  const [openHours, setOpenHours] = useState(false);
+  const [openArchi, setOpenArchi] = useState(false);
+  const [initialHours, setInitialHours] = useState(0);
+  const [openFinish, setOpenFinish] = useState(false);
+  
+  if (!game) {return <></>;};
+
+  const Estado = game.fecha_terminado ? "Terminado" : game.total_horas > 0 ? "Jugando" : "Sin_Jugar";
+  const Precio = game.precio == 0 ? "Gratis" : `$${Number(game.precio).toLocaleString("es-CO")}`;  
+  const v_hora = game.valor_hora == null ? Precio : `$${Number(game.valor_hora).toLocaleString("es-CO")}`;
+
+  let logr = (<>{game.logros_completados}<span className="Amarillo"> / </span>{game.logros_Cantidad}</>);
+  let logrN = (<>—<span className="Amarillo"> / </span>—</>);
 
   return (
     <>
@@ -82,77 +60,99 @@ const porcentajeAlma =
             <div className="banner-text">
                 <button className="Back" onClick={() => navigate(-1)}><span className="Back_Icon"><FaChevronLeft /></span> Volver</button>
                 <h1 className="Read_Title">{game.nombre}</h1>
-                <p className="Read_Year">• {new Date(game.lanzamiento).getFullYear()}</p>
-                <p className={`Status ${Estado}`}>{Descripcion}</p>
-                <div className="Genres_Container">
-                    {game.J_genero.map((g, i) => (
-                        <span key={i} className="Genres">
-                            {g.genero}
-                        </span>
-                    ))}
-                </div>
+                <p className={`Status ${Estado}`} onClick={Estado === "Jugando" ? () => setOpenFinish(true) : undefined}>{Estado.replace("_", " ")}</p>
             </div>
           </div>
-        </div>
+      </div>
 
-        <div className="Tarjet_Container Mas">
-          <Tarjet 
-            title = {'Precio Total'}
-            icon = {<MdOutlineAttachMoney />}
-            color = {"Verde"}
-            Value = {Precio}
-            Subvalue = {`Por hora: ${valorPorHora()}`}
-          />
-          <Tarjet 
-            title = {'Tiempo Jugado'}
-            icon = {<MdAccessTime />}
-            color = {"Violeta"}
-            Value = {Tiempo}
-            Subvalue = {Dias}
-          />
-          <Tarjet 
-            title = {'Almacenamiento'}
-            icon = {<MdOutlineStorage />}
-            color = {"Naranja"}
-            Value = {`${parseFloat(game.almacenamiento)} GB`}
-            Subvalue = {`Instalado`}
-          />
-          <Tarjet 
-            title="Logros"
-            icon={<FaTrophy />}
-            color="Amarillo"
-            Value={Value}
-            Subvalue={Subvalue}
-          />
-        </div>
-          
-        <div className="ContainerT_LM">
+      <div className="ContainerT_LM">
           <div className="Tarjet_LM">
-            <h2 className="Title_Card">Descripcion</h2>
-            <p className="ReadDescription">{game.descripcion}</p>
-          </div>
-          <div className="Tarjet_S">
-            <h2 className="Title_Card">Porcentaje en la Coleccion</h2>
-            <div className="Porcent_Game">
-              <div className="GamePorcent">
-                <p className="Porcent" style={{color: "#22c55e"}}>{porcentajePrecio}%</p>
-                <p className="GameItem">Precio</p>
-              </div>
-              <div className="GamePorcent">
-                <p className="Porcent" style={{color: "#6293ff"}}>{porcentajeHoras}%</p>
-                <p className="GameItem">Tiempo</p>
-              </div>
-              <div className="GamePorcent">
-                <p className="Porcent" style={{color: "#d6803a"}}>{porcentajeAlma}%</p>
-                <p className="GameItem">Storage</p>
+            <div className="card_Info">
+              <h2 className="card-title">Información</h2>
+              <p className="card-description">{game.descripcion}</p>
+
+              <div className="separator" />
+              <div className="info-grid">
+                <div className="info-item">
+                  <span className="icon"><FaCalendarAlt /></span>
+                  <div>
+                    <p className="label">Año de lanzamiento</p>
+                    <p className="value">{new Date(game.lanzamiento).getFullYear()}</p>
+                  </div>
+                </div>
+                <div className="info-item">
+                  <span className="icon"><FaTags /></span>
+                  <div>
+                      <p className="label">Género</p>
+                      <p className="value">
+                        {game.J_genero.map(g => g.genero).join(", ")}
+                      </p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="separator"></div>
-            <UpdateLibrary game={game} />
           </div>
-        </div>
+          
+          <div className="Tarjet_S">
+            <div className="Card_Stats">
+              <div className="card-header">
+                <h2>Estadísticas</h2>
+                <UpdateLibrary game={game} />
+              </div>
+              <StatBlock icon={<MdOutlineAccessTimeFilled />} color={"#7c3aed"} title="Horas Jugadas" value={`${game.total_horas} h`} onClick={() => setOpenHours(true)} />
+              <StatBlock icon={<HiCurrencyDollar  />} color={"#16a34a"} title="Precio" value={`${Precio}`} />
+              <StatBlock icon={<MdOutlineStorage />} color={"#ca8a04"} title="Almacenamiento" value={`${game.almacenamiento} GB`} />
+              <StatBlock 
+                icon={<GoTrophy />} 
+                color={game.logros_Cantidad  ? "#ffd700" : "#6b7280"}
+                title="Logros" value={game.logros_Cantidad  ? logr : logrN} 
+                onClick={game.logros_Cantidad > 0 ? () => setOpenArchi(true) : undefined}
+              />
+
+              {game.logros_Cantidad > 0 ? (
+                <>
+                  <div className="progress">
+                    <div className="progress-bar" style={{ width: `${game.porcentaje_logros}%` }} />
+                  </div>
+                  <p className="stat-footer">{`${game.porcentaje_logros.toFixed(0)}% Completado`}</p>
+                </>
+              ) : ( <br /> )}
+
+              <div className="extra-stats">
+                <div>
+                  <p className="label">Valor por hora</p>
+                  <p className="highlight">{v_hora}</p>
+                </div>
+
+                <div>
+                  <p className="label">Tiempo</p>
+                  <p className="secondary">{game.horas_en_dias}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <HoursModal open={openHours} onClose={() => setOpenHours(false)} hours={hours} setHours={setHours} gameId={game.id} onSaved={fetchGame} Thours={initialHours}/>
+      <ArchiModal open={openArchi} onClose={() => setOpenArchi(false)} Archi={Archi} setArchi={setArchi} gameId={game.id} onSaved={fetchGame} total={game.logros_Cantidad}/>
+      <DateModal open={openFinish} onClose={() => setOpenFinish(false)} gameId={game.id} onSaved={fetchGame}/>
     </>
   );
 };
 
 export default ReadLibrary;
+
+function StatBlock({ icon, color, title, value, onClick}) {
+  return (
+    <div className={`stat-block`}>
+      <div className="stat-left">
+        <span className="stat-icon" style={{ color }}>
+          {icon}
+        </span>
+        <span className="stat-title">{title}</span>
+      </div>
+
+      <span className= {`stat-value ${onClick ? "clickable" : ""}`} onClick={onClick}>{value}</span>
+    </div>
+  );
+}

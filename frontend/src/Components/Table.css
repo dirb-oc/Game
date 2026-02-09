@@ -48,14 +48,14 @@ table tbody tr:last-child td {
   padding: 1.5rem;
   margin: 2rem auto;
   border-radius: 10px;
-  background-color: var(--Head);
+  background-color: var(--Card);
   color: #d1d5db;
   font-style: italic;
 }
 
 /* Contenedor externo */
 .Content_Table {
-  margin: 15px 150px 30px 150px;
+  margin: 15px 10% 30px 10%;
 }
 
 /* Esquinas redondeadas arriba */
@@ -120,4 +120,85 @@ table tbody tr:last-child td:last-child {
 .table-row-animate {
   animation: fadeInUp 0.4s ease forwards;
   opacity: 0; /* Oculto hasta que inicie animación */
+}
+
+/* Tabla Anio */
+.Tittle_Anio{
+  color: white;
+  margin: 20px 35px;
+}
+
+.Subtittle_Anio{
+  color: white;
+  margin: -15px 35px -10px 35px;
+  color: var(--Title_Sec);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.Anio{
+  margin: 20px 35px;
+}
+
+.Anio table thead th {
+  background-color: #101827;
+  border-bottom: 1px solid #414c5a;
+}
+
+.Anio table tbody tr {
+  background-color: var(--Body);
+  transition: background-color 0.2s ease, transform 0.2s ease;  
+}
+
+
+.Anio table th, .Anio table td {
+  text-align: center;
+}
+
+
+.Anio table td:first-child {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+
+.Anio table th:first-child {
+  font-weight: 700;
+}
+
+/* Horas */
+.Anio table td:nth-child(2), .Anio table td:nth-child(3), .Anio table td:nth-child(4){
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.Anio table td:nth-child(2) {
+  color: #537bf1;
+}
+
+/* Jugados */
+.Anio table td:nth-child(3) {
+  color: #f59e0b; /* naranja */
+
+}
+
+/* Terminados */
+.Anio table td:nth-child(4) {
+  color: #22c55e; /* verde */
+
+}
+
+.Anio table thead th {
+  background-color: #101827;
+  border-bottom: 1px solid #414c5a;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.Anio table tbody tr:hover {
+  transform: none; /* quita el zoom */
+  background-color: #1b2432;
 }

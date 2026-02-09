@@ -1,30 +1,31 @@
 import { useEffect, useState } from "react";
-import { loadGames } from "../Controller/libraryController";
-import { loadWish } from "../Controller/WishController";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineAttachMoney, MdOutlineStorage, MdAccessTime } from "react-icons/md";
 import { IoGameControllerOutline } from "react-icons/io5";
-import {convertirHorasADiasYHoras} from "../Utils/Utils";
+import { loadStats } from "../Controller/StatsController";
 import { FaGamepad } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import TopPlayedChart from "../Components/TopPlayedChart";
-import ValuePerHourChart  from "../Components/ValuePerHourChart";
+import ValuePerHourChart from "../Components/ValuePerHourChart";
 import PlayedChart from "../Components/PlayedChart";
 import PriceChart from "../Components/PriceChart"
-import JuegosPorAnioChart  from "../Components/JuegosPorAnioChart"
+import TopGames from "../Components/TopGames";
+import LogrosS  from "../Components/Logros";
+import Table  from "../Components/Table";
 import Tarjet from "../Components/Tarjet"
 
 const StatisticsView = () => {
-    const [games, setGames] = useState([]);
-    const [wish, setwish] = useState([]);
-    const totalJuegos = games.length;
-    const juegosConPrecio = games.filter(game => Number(game.precio) > 0);
-    const totalPrecio = games.reduce((acc, g) => acc + Number(g.precio), 0);
-    const totalHoras = games.reduce((acc, g) => acc + Number(g.tiempo), 0);
-    const totalAlmacenamiento = games.reduce((acc, g) => acc + Number(g.almacenamiento), 0);
-    const promedioPrecio = parseInt(juegosConPrecio.length > 0 ? totalPrecio / juegosConPrecio.length : 0);
-    const promedioAlmacenamiento = totalJuegos > 0 ? totalAlmacenamiento / totalJuegos : 0;
+    const navigate = useNavigate();
+    const [Stats, setStats] = useState({});
 
-    useEffect(() => {loadGames(setGames); loadWish(setwish)},[]);
+    const estadisticas = Stats.stats;
+    const promedios = Stats.averages;
+    const top = Stats.top_games;
+    
+    const handleRowClick = (row) => {
+        navigate(`/estadisticas/${row.year}`);
+    };
+
+    useEffect(() => { loadStats(setStats)},[]);
 
     return(
         <>
@@ -40,54 +41,79 @@ const StatisticsView = () => {
                     title = {'Total de Juegos'}
                     icon = {<FaGamepad />}
                     color = {"Azul"}
-                    Value = {totalJuegos}
-                    Subvalue = {`${wish.length} Deseados`}
+                    Value = {estadisticas?.library?.total ?? 0}
+                    Subvalue={`${estadisticas?.wish ?? 0} Deseados`}
                 />
                 <Tarjet 
                     title = {'Precio Total'}
                     icon = {<MdOutlineAttachMoney />}
                     color = {"Verde"}
-                    Value = {`$${totalPrecio.toLocaleString('es-CO')}`}
-                    Subvalue = {`Promedio: $${promedioPrecio.toLocaleString('es-CO')}`}
+                    Value = {`$${(estadisticas?.library?.precio ?? 0).toLocaleString('es-CO')}`}
+                    Subvalue = {`Promedio: $${(promedios?.precio ?? 0).toLocaleString('es-CO')}`}
                 />
                 <Tarjet 
                     title = {'Horas Jugadas'}
                     icon = {<MdAccessTime  />}
                     color = {"Violeta"}
-                    Value = {`${totalHoras.toLocaleString('es-CO')}h`}
-                    Subvalue = {convertirHorasADiasYHoras(totalHoras)}
+                    Value = {`${estadisticas?.activity?.horas ?? 0}h`}
+                    Subvalue = {`${Stats?.stats?.activity.dias ?? 0}`}
                 />
                 <Tarjet 
                     title = {'Almacenamiento'}
                     icon = {<MdOutlineStorage />}
                     color = {"Naranja"}
-                    Value = {`${totalAlmacenamiento.toLocaleString('es-CO')} GB`}
-                    Subvalue = {`Promedio: ${promedioAlmacenamiento.toFixed(1)} GB`}
+                    Value = {`${estadisticas?.library?.almacenamiento ?? 0} GB`}
+                    Subvalue = {`Promedio: ${promedios?.Almacenamiento ?? 0} GB`}
                 />
             </div>
 
             <div className="Tarjet_Container_L">
                 <div className="Tarjet_L">
-                    <PlayedChart games={games}/>
+                    <PlayedChart games={estadisticas} />
                 </div> 
                 <div className="Tarjet_L">
-                    <PriceChart games={games} />
+                    <h2 className="Tittle_Anio">Actividad por Año</h2>
+                    <p className="Subtittle_Anio">Distribucion de tiempo por año</p>
+                    
+                    <div className="Anio">
+                        <Table data={Stats.por_anio} onRowClick={handleRowClick}></Table>
+                    </div>
                 </div> 
             </div>
-            
+
             <div className="Tarjet_Container_C">
                 <div className="Tarjet_C"> 
-                    <JuegosPorAnioChart  games={games} />
+                    {top && (
+                        <TopGames top_games={top} />
+                    )}
                 </div>
             </div>
             
             <div className="Tarjet_Container_L">
                 <div className="Tarjet_L">
-                    <ValuePerHourChart  games={games} />
+                    <PriceChart 
+                        games={Stats.distribucion} 
+                        tittle={"Distribucion de Precios"} 
+                        subtittle={"Cantidad de juegos por rango de precio "}
+                    />
                 </div> 
                 <div className="Tarjet_L">
-                    <TopPlayedChart games={games} />
+                    {Stats.por_Horas && (
+                        <ValuePerHourChart 
+                            topgames={Stats.por_Horas}
+                            tittle={'Precio por Hora'}
+                            subtittle={<>El valor promedio de la hora es de{' '}<span className="Valor">${promedios.prom_hora.toLocaleString('es-CO')}</span> </>}
+                        />
+                    )}
                 </div> 
+            </div>
+
+            <div className="Tarjet_Container_C">
+                <div className="Tarjet_C">
+                    {Stats.logros && (
+                        <LogrosS data={Stats.logros}/>
+                    )} 
+                </div>
             </div>
         </>
     );
