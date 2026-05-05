@@ -1,0 +1,41 @@
+.Bloque {
+    flex: 0 0 30%;
+    min-width: 100px;
+}
+
+.buscador-wrapper {
+    display: flex;
+    align-items: center;
+
+    background:  var(--Input);
+    border-radius: 8px;
+
+    padding: 8px 12px;
+    gap: 8px;
+
+}
+
+.buscador-icon {
+    color:  white;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.buscador-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+    color: white;
+}
+
+@media (max-width: 600px) {
+
+    .Bloque {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+}
+

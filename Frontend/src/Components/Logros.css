@@ -1,0 +1,164 @@
+.achievement-panel {
+    height: 100%;
+    padding: clamp(25px, 4vw, 25px);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Header */
+.panel-header {
+    margin-top: -30px;
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+}
+
+.panel-header .tittle{
+    font-size: clamp(25px, 4vw, 32px);
+    font-weight: 700;
+    color: white;
+}
+
+.icon {
+    font-size: 35px;
+    color: gold;
+}
+
+/* Stats */
+.statsArch {
+    display: flex;
+    margin-top: -10px;
+    max-width: 750px;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.statA h1 {
+    font-size: clamp(70px, 8vw, 72px);
+    font-weight: 800;
+    margin: 0;
+    color:  white;
+}
+
+.statA p {
+    margin: 0px 2px;
+    margin-top: -10px;
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: 700;
+    color: #849da3;
+}
+
+.lightGreen h1 {
+    color: #00e0a4;
+}
+
+.warning h1 {
+    color: #ffc400;
+}
+
+/* Divider */
+.divider {
+    width:  100%;
+    max-width: 730px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 24px 0;
+}
+
+/* Top Achievement */
+.top-achievement {
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+.top-info {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.top-info h4,
+.top-info .lightGreen {
+    color:  white;
+    margin: 0;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: -20px;
+}
+
+.top-info p {
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #849da3;
+}
+
+.top-info>div:last-child {
+    text-align: right;
+}
+
+.top-info .lightGreen {
+    color: #00e0a4;
+}
+
+/* Global Progress */
+.log-progress {
+    width: 100%;
+    max-width: 730px;
+    margin-top: 30px;
+}
+
+.progress_Indi {
+    color:  white;
+    display: flex;
+    width: 100%;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.progress_Indi p {
+    font-size: clamp(14px, 2vw, 16px);
+    margin: 0px;
+}
+
+.progress-bar {
+    width: 100%;
+    
+    height: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #00e0a4;
+    border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+
+    .top-achievement {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .top-info {
+      flex-direction: column;
+      gap: 6px;
+    }
+  
+    .top-info > div:last-child {
+      text-align: left;
+    }
+  
+  }

@@ -330,7 +330,8 @@ class StatsViewSet(ViewSet):
                 "id": game.id,
                 "nombre": game.nombre,
                 "horas": float(game.horas),
-                "imagen": request.build_absolute_uri(game.imagenP.url) if game.imagenP else None
+                "imagen": request.build_absolute_uri(game.imagenP.url) if game.imagenP else None,
+                "logros": logros_t
             })
 
         # Highlights
@@ -434,7 +435,9 @@ class StatsViewSet(ViewSet):
                         play_sessions__fecha__month=month
                     )
                 )
-            ).distinct()
+            )
+            .distinct()
+            .order_by('nombre')
         )
 
         data = []

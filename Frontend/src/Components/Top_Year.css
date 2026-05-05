@@ -1,0 +1,103 @@
+.panel-topyear {
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    padding: 24px 32px;
+}
+
+/* Header */
+.topyear-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.9;
+}
+
+.topyear-header h3 {
+    font-weight: 500;
+    font-size: clamp(22px, 2vw, 32px);
+    letter-spacing: 1px;
+}
+
+.icon {
+    padding: 5px 0;
+    font-size: 35px;
+    color: gold;
+}
+
+/* Stats */
+.stat h1 {
+    font-size: 72px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.stat p {
+    margin: 0px 2px;
+    margin-top: -10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #849da3;
+}
+
+.lightGreen h1 {
+    color: #00e0a4;
+}
+
+.warning h1 {
+    color: #ffc400;
+}
+
+/* Divider */
+.dividerYear {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 24px 0;
+}
+
+/* Top Achievement */
+ .top-year {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+.top-year .top-infoYear {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-infoYear h3,
+.top-infoYear h4,
+.top-infoYear p {
+    margin: 0;
+}
+
+.top-infoYear h4 {
+    font-size: clamp(24px, 2vw, 38px);
+}
+
+.top-infoYear p {
+    font-size: clamp(20px, 2vw, 24px);
+    font-weight: 700;
+    color: #849da3;
+}
+
+.top-infoYear>div:last-child {
+    text-align: right;
+}
+
+.top-textYear {
+    justify-items: center;
+}
+
+.top-infoYear .lightGreen {
+    font-size: clamp(24px, 2vw, 38px);
+    color: #00e0a4;
+}
