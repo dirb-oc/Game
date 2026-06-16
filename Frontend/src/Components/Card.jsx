@@ -1,38 +1,53 @@
-import { FaRegClock } from "react-icons/fa";
+import { FaClock, FaHdd, FaCheckCircle } from "react-icons/fa";
+import { formatPrice } from "../Services/formatters";
+import { useNavigate } from "react-router-dom";
 import "./Card.css";
 
-const Card = ({ image, title, genres, year, time, DateF, price, storage, style = {} }) => {
-    const Tiempo = time > 0 ? `${parseFloat(time)} ${time == 1 ? "Hora" : "Horas"}` : "----";
-    const Precio = price == 0 ? "Gratis" : `$${Number(price).toLocaleString("es-CO")}`;
-    const Estado = DateF ? "Terminado" : time > 0 ? "Jugando" : "Sin_Jugar";
-    const lanzamiento = new Date(year).getFullYear();
+function Card({ game }) {
+    const navigate = useNavigate();
+    const isCompleted = !!game.fecha_terminado;
+    const releaseYear = game.lanzamiento ? new Date(game.lanzamiento).getFullYear() : "----";
 
     return (
-        <div className="Card" style={style}>
-            <img className="Card_Image" src={image} alt={title} />
-            <div className="Card_Info">
-                <div className="Card_Head">
-                    <h3 className="Card_Title">{title}</h3>
-                    <p className="Year_Realese">{lanzamiento}</p>
+        <div className="game-card" onClick={() => navigate(`/game/${game.id}`)}>
+            <div className="game-card-image" style={{ backgroundImage: `url(${game.imagenP})` }}>
+                <div className="game-card-gradient" />
+            </div>
+
+            <div className="game-card-content">
+
+                <div className="card-header">
+                    <h3>{game.nombre}</h3>
+                    <span className="price">{formatPrice(game.precio)}</span>
                 </div>
-                {genres.slice(0, 2).map((g, i) => (
-                    <span key={i} className="Genres">
-                        {g.genero}{i < genres.length - 1}
-                    </span>
-                ))}
-                <div className="Flexo">
-                    <p className="Time">
-                        <span className="Icon"><FaRegClock /></span>{Tiempo}
-                    </p>
-                    <p className={`Status ${Estado}`}>{Estado.replace("_", " ")}</p>
+
+                <div className="card-status">
+                    <span className="year">{releaseYear}</span>
+
+                    {isCompleted ? (
+                        <span className="completedCard"><FaCheckCircle /> Completado</span>
+                    ) : game.total_horas > 0 ? (
+                        <span className="playing">En progreso</span>
+                    ) : (
+                        <span className="pending">Sin Jugar</span>
+                    )}
                 </div>
-                <div className="Card_Data">
-                    <p>{Precio}</p>
-                    <p>{parseFloat(storage)} GB</p>
+
+                <div className="genres">
+                    {game.J_genero?.slice(0, 3).map((genre) => (
+                        <span key={genre.id} className="genre-pill">{genre.genero}</span>
+                    ))}
+                </div>
+
+                <div className="divider" />
+
+                <div className="card-footer">
+                    <div className="footer-item hours"><FaClock />{game.total_horas}h</div>
+                    <div className="footer-item storage"><FaHdd />{game.almacenamiento} GB</div>
                 </div>
             </div>
         </div>
     );
-};
+}
 
 export default Card;

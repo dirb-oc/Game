@@ -1,0 +1,309 @@
+.GameStats-Container {
+    display: flex;
+    gap: 20px;
+}
+
+.gameInformation,
+.gameStats {
+    border: 1px solid var(--border);
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.gameInformation {
+    width: 70%;
+}
+
+.gameStats {
+    width: 30%;
+}
+
+.Edit {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s;
+}
+
+/* Informacion */
+.card_Info {
+    margin: 25px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gamecard-header {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.card-title {
+    font-size: clamp(20px, 1vw, 28px);
+    color: var(--Title);
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-description {
+    font-size: clamp(16px, 1vw, 20px);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 45px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    padding-top: 16px;
+    margin-top: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.info-item .icon {
+    color: var(--Azul);
+    font-size: 24px;
+    margin-top: 7px;
+    margin-right: 3px;
+}
+
+.info-item .label {
+    font-size: clamp(14px, 2vw, 18px);
+    color: #9e9e9e;
+}
+
+.info-item .value {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 700;
+    color: white;
+}
+
+
+/* Estadisticas */
+.Card_Stats {
+    margin: 25px 35px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    color: #22c55e;
+    transition: all 0.7s;
+}
+
+.game-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 1rem;
+}
+
+.stats-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.tittle-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+
+    width: fit-content;
+
+    border-radius: 999px;
+
+}
+
+.tittle-stat svg {
+    font-size: 16px;
+}
+
+.tittle-stat .stat-label {
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+
+.stat-number {
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-size: 22px;
+    text-align: center;
+}
+
+.stat-label {
+    color: var(--Title);
+}
+
+.achievement-section {
+    margin-top: 20px;
+}
+
+.achievementGame-header {
+    display: flex;
+    font-weight: 500;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+    color: var(--text-secondary);
+}
+
+.achievement-bar {
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--border);
+}
+
+.achievement-fil {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--Storage);
+}
+
+.extra-stats {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.extra-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.extra-stats span {
+    color: var(--text-secondary);
+    font-size: .9rem;
+}
+
+.extra-stats strong {
+    font-size: 1.4rem;
+}
+
+
+@media (max-width: 900px) {
+
+    .Banner {
+        display: flex;
+        width: 100%;
+        position: relative;
+        min-height: 90vh;
+        overflow: hidden;
+        padding: 20px 0;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        text-align: center;
+    }
+
+    .banner-text {
+        margin-left: 0;
+    }
+
+    .banner-cover {
+        margin-top: 30px;
+        width: 80%;
+    }
+
+    .Read_Title {
+        margin: 0 10%;
+        font-size: 36px;
+        margin-bottom: 5px;
+    }
+
+    .card_Info {
+        margin: 25px;
+    }
+
+    .Card_Stats {
+        margin: 25px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .GameStats-Container {
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+
+    .gameInformation {
+        width: 100%;
+    }
+
+    .gameStats {
+        width: 100%;
+    }
+
+    .game-stats {
+        display: block;
+        gap: 12px;
+        margin-top: 1rem;
+    }
+
+    .stats-card {
+        padding: 5px;
+        display: flex;
+        border: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .game-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .stats-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 12px 0;
+
+        background: transparent;
+        border: none;
+    }
+
+    .tittle-stat {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stat-number {
+        margin: 0;
+        font-size: 1rem;
+        text-align: right;
+    }
+}

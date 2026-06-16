@@ -1,0 +1,62 @@
+.year-highlight-panel {
+    padding: 2rem 2rem 0 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background-size: cover;
+    background-position: center;
+    margin-top: 15px;
+}
+
+.YearHighlights-stats {
+    display: flex;
+    gap: 4rem;
+}
+
+.YearHighlights-stats h1{
+    font-size: 48px;
+}
+
+.year-games {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 20px;
+}
+
+.highlight-header {
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    color: var(--text-secondary);
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.highlight-header svg {
+    font-size: 1.2rem;
+}
+
+.highlight-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.highlight-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.year-summary {
+    display: grid;
+    grid-template-columns: 600px 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+@media (max-width: 1200px) {
+    .year-summary {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+}

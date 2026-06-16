@@ -1,0 +1,107 @@
+.years-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.years-title {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.years-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+}
+
+.years-footer {
+    margin-top: 20px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+@media (max-width: 768px) {
+    .years-footer {
+        gap: 40px;
+    }
+}
+
+.year-average {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+}
+
+.year-average svg {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.year-average strong {
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.year-average span {
+    font-size: .85rem;
+    color: var(--text-muted);
+}
+
+
+/* CARD */
+.year-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+}
+
+.year-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.year-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+
+    color: var(--text-primary);
+
+    margin: 0 0 10px;
+}
+
+.year-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.year-stat svg {
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .year-title {
+        font-size: 1.85rem;
+    }
+}

@@ -1,0 +1,81 @@
+.month-chart-card {
+    background: var(--bg-secondary);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 420px;
+}
+
+.month-chart-title {
+    margin-bottom: 20px;
+
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    color: var(--text-primary);
+}
+
+.month-chart-wrapper {
+    flex: 1;
+
+    min-height: 360px;
+}
+
+.month-tooltip {
+
+    background: var(--bg-primary);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    backdrop-filter: blur(8px);
+}
+
+.month-tooltip strong {
+    display: block;
+
+    margin-bottom: .25rem;
+
+    color: var(--Title);
+}
+
+.month-tooltip p {
+    margin: 0;
+
+    color: var(--text-secondary);
+}
+
+.month-summary {
+    margin-top: 20px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+}
+
+.month-summary h2 {
+    margin: 0;
+
+    font-size: 2rem;
+    font-weight: 800;
+
+    color: var(--Cash);
+}
+
+.month-summary p {
+    margin-top: .25rem;
+
+    color: var(--text-muted);
+}

@@ -1,12 +1,17 @@
 from django.db.models import Sum, Q, F, Max, FloatField, Count, ExpressionWrapper, FloatField, Avg, Min
 from django.db.models.functions import ExtractYear
 from rest_framework.response import Response
+from django.db.models.functions import TruncMonth
 from rest_framework.viewsets import ViewSet
 from rest_framework import viewsets, status
 
 from library.services.Days import dias
 from .serializers import *
 from .models import *
+
+class DeviceViewSet(viewsets.ModelViewSet):
+    queryset = Device.objects.all()
+    serializer_class = DeviceSerializer
 
 class GenresViewSet(viewsets.ModelViewSet):
     queryset = Genres.objects.all()
@@ -72,7 +77,6 @@ class StatsViewSet(ViewSet):
             return Response({"error": "Year must be numeric"}, status=400)
 
         return self._year_stats(request, int(pk))
-
 
     def _global_stats(self, request):
 
@@ -159,18 +163,37 @@ class StatsViewSet(ViewSet):
             distribution.append({"range": f"{current//1000}-{next_range//1000}K","count": count})
             current = next_range
 
-        # Por Hora
+       # Por Hora
         com = (
             Library.objects
             .annotate(horas=Sum('play_sessions__horas'))
             .filter(horas__gt=0, precio__gt=0)
-            .annotate(precio_por_hora=ExpressionWrapper(F('precio') / F('horas'),output_field=FloatField()))
+            .annotate(
+                precio_por_hora=ExpressionWrapper(
+                    F('precio') / F('horas'),
+                    output_field=FloatField()
+                )
+            )
         )
 
         por_hora_raw = [
             {
-                "range": "0-1k",
-                "count": com.filter(precio_por_hora__lt=1000).count()
+                "range": "-100",
+                "count": com.filter(precio_por_hora__lt=100).count()
+            },
+            {
+                "range": "100-500",
+                "count": com.filter(
+                    precio_por_hora__gte=100,
+                    precio_por_hora__lt=500
+                ).count()
+            },
+            {
+                "range": "500-1k",
+                "count": com.filter(
+                    precio_por_hora__gte=500,
+                    precio_por_hora__lt=1000
+                ).count()
             },
             {
                 "range": "1k-2.5k",
@@ -199,7 +222,7 @@ class StatsViewSet(ViewSet):
             }
         ]
 
-        #  eliminar los rangos con count = 0
+        # eliminar rangos vacíos
         por_hora = [r for r in por_hora_raw if r["count"] > 0]
 
         # Distribucion de Years
@@ -252,6 +275,67 @@ class StatsViewSet(ViewSet):
                 "imagen": request.build_absolute_uri(game.imagenP.url) if game.imagenP else None
             })
 
+        total_precio_jugados = (
+            Library.objects
+            .annotate(horas=Sum('play_sessions__horas'))
+            .filter(horas__gt=0)
+            .aggregate(total=Sum('precio'))['total'] or 0
+        )
+
+        # =========================
+        # Horas por PC
+        # =========================
+        horas_por_pc = []
+
+        for device in Device.objects.all():
+        
+            sesiones = PlaySession.objects.filter(
+                fecha__gte=device.fecha_inicio
+            )
+
+            if device.fecha_fin:
+                sesiones = sesiones.filter(
+                    fecha__lte=device.fecha_fin
+                )
+
+            horas = (
+                sesiones.aggregate(
+                    total=Sum("horas")
+                )["total"] or 0
+            )
+
+            horas_por_pc.append({
+                "id": device.id,
+                "nombre": device.nombre,
+                "horas": round(horas, 1)
+            })
+
+            # Meses Activos
+            meses_activos = (
+                PlaySession.objects
+                .annotate(mes=TruncMonth("fecha"))
+                .values("mes")
+                .distinct()
+                .count()
+            )
+
+            anos = meses_activos // 12
+            meses_restantes = meses_activos % 12
+        
+            partes = []
+        
+            if anos:
+                partes.append(
+                    f"{anos} {'año' if anos == 1 else 'años'}"
+                )
+        
+            if meses_restantes:
+                partes.append(
+                    f"{meses_restantes} {'mes' if meses_restantes == 1 else 'meses'}"
+                )
+        
+            tiempo_jugando = " y ".join(partes)
+
         return Response({
             "stats": {
                 "library":{
@@ -266,6 +350,8 @@ class StatsViewSet(ViewSet):
                     "comenzados": comenzados,
                     "por_comenzados": round(Por_Comenzados),
                     "por_terminados": round(Por_termindado),
+                    "precio_jugados": int(total_precio_jugados),
+                    "tiempo_activo": tiempo_jugando,
                 },
                 "wish": total_deseados,
             },
@@ -284,7 +370,8 @@ class StatsViewSet(ViewSet):
             },
             "distribucion": distribution,
             "por_anio": por_anio,
-            "top_games": top_games_data
+            "top_games": top_games_data,
+            "horas_pc": horas_por_pc,
     })
 
     def _year_stats(self, request, year):
@@ -299,6 +386,37 @@ class StatsViewSet(ViewSet):
         juegos = Library.objects.filter(id__in=juegos_ids)
         precio_total = juegos.aggregate(total=Sum('precio'))['total'] or 0
         almacenamiento_total = juegos.aggregate(total=Sum('almacenamiento'))['total'] or 0
+        
+        meses_activos = (
+            sessions
+            .values_list('fecha__month', flat=True)
+            .distinct()
+            .count()
+        )
+        promedio_horas_mes = (
+            float(total_horas) / meses_activos
+            if meses_activos else 0
+        )
+
+        juegos_mes = []
+
+        for month in range(1, 13):
+        
+            cantidad = (
+                sessions
+                .filter(fecha__month=month)
+                .values('game_id')
+                .distinct()
+                .count()
+            )
+        
+            if cantidad > 0:
+                juegos_mes.append(cantidad)
+        
+        promedio_juegos_mes = (
+            sum(juegos_mes) / len(juegos_mes)
+            if juegos_mes else 0
+        )
 
         # Distribucion
         first_play = (PlaySession.objects.filter(game_id__in=juegos_ids).values('game_id').annotate(first_date=Min('fecha')))
@@ -382,6 +500,9 @@ class StatsViewSet(ViewSet):
             
             "almacenamiento": float(almacenamiento_total),
             "pro_alm": float(almacenamiento_total / total_juegos) if total_juegos else 0,
+
+            "pro_horas_mes": round(promedio_horas_mes, 1),
+            "pro_juegos_mes": round(promedio_juegos_mes, 1),
             
         },
         "distribucion": {

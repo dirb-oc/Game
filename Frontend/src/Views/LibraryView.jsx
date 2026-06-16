@@ -1,126 +1,78 @@
+import { loadLibrary } from "../Controllers/LibraryController";
 import { useEffect, useState } from "react";
-import { loadGames } from "../Controller/libraryController";
-import { IoGameControllerOutline } from "react-icons/io5";
-import { Selector_Styles } from "../Utils/Utils"
 import { Link } from 'react-router-dom';
-import Buscador from "../Components/Buscador"
-import LibraryCreate from "./LibraryCreate";
-import Card from "../Components/Card"
-import Select from "react-select";
+import Filters from "../Components/Filters";
+import Loading from "../Components/Loading";
+import Card from "../Components/Card";
 
-const LibraryView = () => {
+function LibraryView() {
     const [games, setGames] = useState([]);
-    const [orderBy, setOrderBy] = useState("Nombre");
-    const [filterBy, setFilterBy] = useState("Todos");
-    const [searchTerm, setSearchTerm] = useState("");
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [search, setSearch] = useState("");
+    const [status, setStatus] = useState("all");
+    const [order, setOrder] = useState("az");
 
-    const opcionesOrden = [
-        { value: "Nombre", label: "Nombre" },
-        { value: "Lanzamiento", label: "Lanzamiento" },
-        { value: "Horas", label: "Horas" },
-        { value: "Precios", label: "Precio" },
-        { value: "Almacenamiento", label: "Almacenamiento" },
-    ];
+    const refreshGames = () => { loadLibrary(setGames, setLoading, setError); };
 
-    const opcionesFiltro = [
-        { value: "Todos", label: "Todos" },
-        { value: "Terminados", label: "Terminados" },
-        { value: "Jugando", label: "Jugando" },
-        { value: "Sin jugar", label: "Sin jugar" },
-    ];
+    useEffect(() => { refreshGames(); }, []);
 
-    const ordenarJuegos = (lista, criterio) => {
-        const copia = [...lista];
-        switch (criterio) {
-            case "Nombre":
-                return copia.sort((a, b) => a.nombre.localeCompare(b.nombre));
-            case "Lanzamiento":
-                return copia.sort((a, b) => new Date(b.lanzamiento) - new Date(a.lanzamiento));
-            case "Horas":
-                return copia.sort((a, b) => b.total_horas - a.total_horas);
-            case "Precios":
-                return copia.sort((a, b) => b.precio - a.precio);
-            case "Almacenamiento":
-                return copia.sort((a, b) => b.almacenamiento - a.almacenamiento);
-            default:
-                return copia;
+    if (loading) { return  <Loading text="Cargando Libreria..." />; }
+    if (error) { return <h2>{error}</h2>; }
+
+    const filteredGames = games.filter((game) =>
+        game.nombre.toLowerCase().includes(search.toLowerCase())).filter((game) => {
+
+            if (status === "all") return true;
+
+            const completed = !!game.fecha_terminado;
+            const playing = game.total_horas > 0 && !completed;
+            const pending = game.total_horas === 0;
+
+            switch (status) {
+                case "completed": return completed;
+                case "playing": return playing;
+                case "pending": return pending;
+
+                default: return true;
+            }
+        });
+
+    filteredGames.sort((a, b) => {
+
+        switch (order) {
+            case "az": return a.nombre.localeCompare(b.nombre, "es", { sensitivity: "base" });
+            case "za": return b.nombre.localeCompare(a.nombre, "es", { sensitivity: "base" });
+            case "hours": return (Number(b.total_horas) - Number(a.total_horas));
+            case "price": return (Number(b.precio) - Number(a.precio));
+            case "date release": return (new Date(b.lanzamiento) - new Date(a.lanzamiento));
+            case "storage": return (Number(b.almacenamiento) - Number(a.almacenamiento));
+
+            default: return 0;
         }
-    };
 
-    const filtrarJuegos = (lista, filtro) => {
-        switch (filtro) {
-            case "Terminados":
-                return lista.filter(j => j.fecha_terminado);
-            case "Jugando":
-                return lista.filter(j => j.total_horas > 0 && !j.fecha_terminado);
-            case "Sin jugar":
-                return lista.filter(j => j.total_horas == 0 || j.total_horas == false);
-            default:
-                return lista;
-        }
-    };
+    });
 
-    const buscarJuegos = (lista, texto) => {
-        return lista.filter(j => j.nombre.toLowerCase().includes(texto.toLowerCase()));
-    };
-
-    const juegosFiltrados = ordenarJuegos(
-        filtrarJuegos(buscarJuegos(games, searchTerm), filterBy), orderBy
-    );
-
-    useEffect(() => { loadGames(setGames); }, []);
     return (
-        <>
-            <div className="Title">
-                <h1><span className="Icon_Title"><IoGameControllerOutline /></span>Coleccion de Videojuegos</h1>
-                <p>
-                    {juegosFiltrados.length} de {games.length} juegos - ver las
-                    <Link to="/estadisticas" className="Stats"> Estadísticas</Link> o los
-                    <Link to="/deseados" className="Wish"> Deseados</Link>.
-                </p>
-            </div>
+        <div className="Base">
+            <h1 className="Title">Colección de Videojuegos</h1>
+            <p className="SubTitle">{filteredGames.length} de {games.length} Juegos -  Ver <Link to="/stats" className="LinkStats">Estadisticas</ Link></p>
 
-            <div className="Menu_Tool">
-                <div className="Tool_Group">
-                    <Buscador onChange={(e) => setSearchTerm(e.target.value)} />
-                    <Select
-                        styles={Selector_Styles}
-                        options={opcionesOrden}
-                        value={opcionesOrden.find(opt => opt.value === orderBy)}
-                        onChange={(selected) => setOrderBy(selected.value)}
-                        placeholder="Ordenar por"
-                    />
-                    <Select
-                        styles={Selector_Styles}
-                        options={opcionesFiltro}
-                        value={opcionesFiltro.find(opt => opt.value === filterBy)}
-                        onChange={(selected) => setFilterBy(selected.value)}
-                        placeholder="Filtrar por"
-                    />
-                </div>
-                <LibraryCreate />
-            </div>
+            <Filters
+                search={search}
+                setSearch={setSearch}
+                status={status}
+                setStatus={setStatus}
+                order={order}
+                setOrder={setOrder}
+                refreshGames={refreshGames}
+            />
 
-            <div className="Card_Container">
-                {juegosFiltrados.map((game, i) => (
-                    <Link to={`/${game.id}`} key={game.id} style={{ textDecoration: "none", color: "inherit" }}>
-                        <Card
-                            style={{ animationDelay: `${i * 50}ms` }}
-                            id={game.id}
-                            year={game.lanzamiento}
-                            time={game.total_horas}
-                            image={game.imagen}
-                            title={game.nombre}
-                            price={game.precio}
-                            genres={game.J_genero}
-                            DateF={game.fecha_terminado}
-                            storage={game.almacenamiento}
-                        />
-                    </Link>
-                ))}
+            <div className="games-grid">
+                {filteredGames.map((game) => (<Card key={game.id} game={game} />))}
             </div>
-        </>
+        </div>
     );
-};
+}
 
 export default LibraryView;

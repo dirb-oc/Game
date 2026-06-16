@@ -1,0 +1,78 @@
+.month-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.month-label {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.month-header h2 {
+    margin-top: 4px;
+}
+
+.month-totals {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.month-totals div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.month-games {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.month-game {
+    display: flex;
+    gap: 16px;
+}
+
+.month-game img {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.month-game-content {
+    flex: 1;
+}
+
+.month-game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.month-game-header h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.month-game-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.month-game-footer span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

@@ -1,0 +1,58 @@
+.chart-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-title {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chart-wrapper {
+
+    flex: 1;
+    min-height: 250px;
+}
+
+.chart-average {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.chart-average h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.chart-average p {
+    color: var(--text-muted);
+    font-size: .9rem;
+}
+
+.custom-tooltip {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .chart-average h2 {
+        font-size: 1.5rem;
+    }
+
+    .chart-average p {
+        font-size: .7rem;
+    }
+
+}

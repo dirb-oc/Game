@@ -1,0 +1,50 @@
+.filters {
+    display: flex;
+    gap: 12px;
+    margin: 10px 0;
+    margin-bottom: 15px;
+}
+
+.filters .Search,
+.filters select {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.filters input {
+    flex: 1;
+}
+
+
+.ButtonCreate {
+    background-color: var(--Azul);
+    border: 1px solid var(--Azul);
+    padding: 0 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    align-content: center;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters input,
+    .filters select,
+    .ButtonCreate {
+        width: 100%;
+    }
+
+
+    .ButtonCreate {
+        text-align: center;
+        padding: 10px;
+    }
+}

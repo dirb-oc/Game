@@ -4,6 +4,11 @@ from rest_framework import serializers
 from django.db.models import Sum
 from .models import *
 
+class DeviceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Device
+        fields = "__all__"
+
 class GenresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genres
@@ -25,7 +30,7 @@ class LibraryListSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'nombre', 'precio', 'lanzamiento',
             'fecha_terminado', 'J_genero', 'generos_ids', 
-            'total_horas', 'imagen', 'almacenamiento',
+            'total_horas', 'imagenP', 'imagen', 'almacenamiento',
         ]
 
     def get_total_horas(self, obj):

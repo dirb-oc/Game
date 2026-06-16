@@ -9,6 +9,7 @@ router.register(r'deseados', WishViewSet)
 router.register(r'sesiones', PlaySessionViewSet)
 router.register(r'logros', AchievementProgressViewSet)
 router.register(r'stats', StatsViewSet, basename='stats')
+router.register(r'equipo', DeviceViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
